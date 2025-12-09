@@ -4,17 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bozhidar & Melissa – Wedding</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
   <style>
     :root {
-      --bg: #070817;
-      --bg-soft: #0b1020;
-      --card: #111827;
-      --accent: #e0b984;
-      --accent-soft: rgba(224, 185, 132, 0.12);
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --border: #1f2937;
-      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+      --bg: #f5f2ec;
+      --bg-soft: #fdfbf7;
+      --card: #ffffff;
+      --accent: #d8a6b4;
+      --accent-soft: rgba(216, 166, 180, 0.16);
+      --text: #1f2933;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.08);
       --radius-lg: 18px;
       --radius-pill: 999px;
       --max-width: 1120px;
@@ -28,9 +37,9 @@
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #151c36 0, #050816 45%, #020309 100%);
+      background: radial-gradient(circle at top, #faf6f0 0, #f5f2ec 40%, #f1ebe2 100%);
       color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
@@ -59,11 +68,11 @@
       backdrop-filter: blur(18px);
       background: linear-gradient(
         to bottom,
-        rgba(5, 8, 22, 0.95),
-        rgba(5, 8, 22, 0.75),
+        rgba(253, 252, 249, 0.96),
+        rgba(253, 252, 249, 0.92),
         transparent
       );
-      border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.9);
     }
 
     .nav-inner {
@@ -81,7 +90,7 @@
       align-items: center;
       gap: 10px;
       font-size: 15px;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--muted);
     }
@@ -90,14 +99,14 @@
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      border: 1px solid rgba(249, 250, 251, 0.15);
+      border: 1px solid rgba(209, 213, 219, 0.8);
       display: grid;
       place-items: center;
       font-size: 13px;
-      background: radial-gradient(circle at 30% 0, #f9fafb 0, #e0b984 18%, #111827 70%);
-      color: #050816;
+      background: radial-gradient(circle at 30% 0, #ffffff 0, #f3d5dd 30%, #fdf7f4 80%);
+      color: #4b5563;
       font-weight: 600;
-      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 4px 12px rgba(148, 163, 184, 0.4);
     }
 
     .nav-links {
@@ -116,7 +125,7 @@
     }
 
     .nav-links a:hover {
-      background: rgba(148, 163, 184, 0.12);
+      background: rgba(248, 250, 252, 0.9);
       color: var(--text);
       transform: translateY(-1px);
     }
@@ -124,9 +133,9 @@
     .nav-cta {
       padding: 7px 16px;
       border-radius: var(--radius-pill);
-      border: 1px solid rgba(224, 185, 132, 0.7);
-      background: radial-gradient(circle at top left, #f9fafb 0, #e0b984 25%, #111827 80%);
-      color: #050816;
+      border: 1px solid rgba(216, 166, 180, 0.9);
+      background: radial-gradient(circle at top left, #ffffff 0, #e9c4cf 30%, #f8e3e8 85%);
+      color: #4b1f2b;
       font-size: 13px;
       font-weight: 600;
       text-transform: uppercase;
@@ -148,16 +157,16 @@
     .nav-cta:hover {
       transform: translateY(-1px) scale(1.01);
       filter: brightness(1.03);
-      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 22px 55px rgba(148, 163, 184, 0.45);
     }
 
     .nav-toggle {
       display: none;
-      border: 1px solid rgba(148, 163, 184, 0.4);
+      border: 1px solid rgba(209, 213, 219, 0.9);
       border-radius: 999px;
       padding: 6px 10px;
       font-size: 13px;
-      background: rgba(15, 23, 42, 0.9);
+      background: rgba(255, 255, 255, 0.95);
       color: var(--muted);
       cursor: pointer;
     }
@@ -165,7 +174,13 @@
     /* HERO */
 
     .hero {
-      padding: 40px 20px 60px;
+      padding: 48px 20px 64px;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(to right, rgba(245, 242, 236, 0.96), rgba(245, 242, 236, 0.9)),
+        url("https://images.pexels.com/photos/3951316/pexels-photo-3951316.jpeg")
+          center/cover no-repeat;
     }
 
     .hero-inner {
@@ -183,8 +198,8 @@
       gap: 8px;
       padding: 4px 10px 4px 4px;
       border-radius: var(--radius-pill);
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--border);
       color: var(--muted);
       font-size: 12px;
       text-transform: uppercase;
@@ -195,21 +210,22 @@
     .eyebrow-pill {
       padding: 2px 10px;
       border-radius: 999px;
-      background: radial-gradient(circle at top left, #f9fafb 0, #e0b984 35%, #111827 80%);
-      color: #050816;
+      background: radial-gradient(circle at top left, #ffffff 0, #e9c4cf 30%, #fdf7f4 80%);
+      color: #4b1f2b;
       font-weight: 600;
     }
 
     .hero-title {
-      font-family: "Georgia", "Times New Roman", serif;
+      font-family: "Playfair Display", serif;
       font-size: clamp(40px, 5vw, 52px);
-      letter-spacing: 0.08em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       margin-bottom: 12px;
     }
 
     .hero-title span {
       display: block;
+      font-family: "Poppins", sans-serif;
       font-size: 0.72em;
       letter-spacing: 0.22em;
       text-transform: uppercase;
@@ -239,15 +255,15 @@
       gap: 8px;
       padding: 6px 10px;
       border-radius: var(--radius-pill);
-      background: rgba(15, 23, 42, 0.84);
-      border: 1px solid rgba(148, 163, 184, 0.3);
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--border);
     }
 
     .hero-meta-label {
       text-transform: uppercase;
       letter-spacing: 0.16em;
       font-size: 11px;
-      color: rgba(148, 163, 184, 0.9);
+      color: #9ca3af;
     }
 
     .hero-meta-value {
@@ -279,27 +295,27 @@
     }
 
     .btn-primary {
-      background: radial-gradient(circle at top left, #f9fafb 0, #e0b984 28%, #111827 85%);
-      color: #050816;
+      background: radial-gradient(circle at top left, #ffffff 0, #e9c4cf 30%, #f8e3e8 85%);
+      color: #4b1f2b;
       font-weight: 600;
       box-shadow: var(--shadow-soft);
-      border-color: rgba(224, 185, 132, 0.9);
+      border-color: rgba(216, 166, 180, 0.9);
     }
 
     .btn-primary:hover {
       transform: translateY(-1px) scale(1.01);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.78);
+      box-shadow: 0 24px 60px rgba(148, 163, 184, 0.5);
       filter: brightness(1.05);
     }
 
     .btn-ghost {
-      background: rgba(15, 23, 42, 0.7);
-      border-color: rgba(148, 163, 184, 0.6);
+      background: rgba(255, 255, 255, 0.9);
+      border-color: var(--border);
       color: var(--muted);
     }
 
     .btn-ghost:hover {
-      background: rgba(15, 23, 42, 0.95);
+      background: #ffffff;
       color: var(--text);
       transform: translateY(-1px);
     }
@@ -315,10 +331,8 @@
     .hero-card {
       border-radius: 26px;
       padding: 20px 20px 22px;
-      background:
-        linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(8, 47, 73, 0.9)),
-        radial-gradient(circle at top left, rgba(224, 185, 132, 0.35), transparent 55%);
-      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: linear-gradient(145deg, #ffffff, #f9f3f1);
+      border: 1px solid var(--border);
       box-shadow: var(--shadow-soft);
       position: relative;
       overflow: hidden;
@@ -333,12 +347,12 @@
       font-size: 12px;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: rgba(248, 250, 252, 0.85);
+      color: var(--muted);
       margin-bottom: 8px;
     }
 
     .hero-date {
-      font-family: "Georgia", "Times New Roman", serif;
+      font-family: "Playfair Display", serif;
       font-size: 22px;
       margin-bottom: 12px;
     }
@@ -359,8 +373,8 @@
     .countdown-item {
       padding: 8px 6px;
       border-radius: 14px;
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: #fdfbf7;
+      border: 1px solid var(--border);
       text-align: center;
     }
 
@@ -373,7 +387,7 @@
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      color: rgba(148, 163, 184, 0.9);
+      color: #9ca3af;
     }
 
     .hero-note {
@@ -392,8 +406,8 @@
     .hero-chip {
       padding: 4px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border);
+      background: #fdfbf7;
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -401,10 +415,9 @@
 
     .hero-card-shine {
       position: absolute;
-      inset: -30%;
-      background: radial-gradient(circle at 0 0, rgba(249, 250, 251, 0.26) 0, transparent 55%);
-      opacity: 0.6;
-      mix-blend-mode: screen;
+      inset: -40%;
+      background: radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.7) 0, transparent 60%);
+      opacity: 0.7;
       pointer-events: none;
     }
 
@@ -419,10 +432,9 @@
       margin: 0 auto 40px;
       padding: 24px 20px 26px;
       border-radius: var(--radius-lg);
-      background: rgba(15, 23, 42, 0.78);
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(18px);
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
     }
 
     .section-header {
@@ -431,12 +443,13 @@
       align-items: flex-end;
       gap: 14px;
       margin-bottom: 16px;
-      border-bottom: 1px solid rgba(55, 65, 81, 0.8);
+      border-bottom: 1px solid var(--border);
       padding-bottom: 10px;
     }
 
     .section-title {
-      font-size: 16px;
+      font-family: "Playfair Display", serif;
+      font-size: 18px;
       text-transform: uppercase;
       letter-spacing: 0.18em;
     }
@@ -468,15 +481,15 @@
       align-items: start;
       padding: 10px 12px;
       border-radius: 14px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: #ffffff;
+      border: 1px solid var(--border);
     }
 
     .timeline-time {
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.18em;
-      color: rgba(148, 163, 184, 0.95);
+      color: #9ca3af;
       margin-top: 4px;
     }
 
@@ -508,15 +521,15 @@
     .venue-card {
       padding: 12px 12px 13px;
       border-radius: 16px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid var(--border);
+      background: #ffffff;
     }
 
     .venue-label {
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      color: rgba(148, 163, 184, 0.95);
+      color: #9ca3af;
       margin-bottom: 4px;
     }
 
@@ -549,8 +562,8 @@
       font-size: 11px;
       padding: 5px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid var(--border);
+      background: #ffffff;
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -560,8 +573,8 @@
     }
 
     .chip-link:hover {
-      background: rgba(31, 41, 55, 0.95);
-      border-color: rgba(224, 185, 132, 0.9);
+      background: #fdfbf7;
+      border-color: rgba(216, 166, 180, 0.9);
       color: var(--text);
       transform: translateY(-1px);
     }
@@ -578,8 +591,8 @@
     .dress-main {
       padding: 12px;
       border-radius: 14px;
-      border: 1px solid rgba(55, 65, 81, 0.95);
-      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid var(--border);
+      background: #ffffff;
     }
 
     .dress-pill {
@@ -588,8 +601,8 @@
       letter-spacing: 0.16em;
       padding: 4px 9px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.75);
+      background: #fdfbf7;
+      border: 1px solid var(--border);
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -625,8 +638,8 @@
     .dress-side {
       padding: 12px;
       border-radius: 14px;
-      border: 1px dashed rgba(148, 163, 184, 0.7);
-      background: rgba(15, 23, 42, 0.95);
+      border: 1px dashed rgba(209, 213, 219, 0.9);
+      background: #ffffff;
       font-size: 13px;
       color: var(--muted);
     }
@@ -656,7 +669,7 @@
       font-size: 13px;
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      color: rgba(224, 185, 132, 0.95);
+      color: #b65f7c;
       margin-bottom: 8px;
     }
 
@@ -666,8 +679,8 @@
       gap: 8px;
       padding: 6px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(224, 185, 132, 0.9);
-      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(216, 166, 180, 0.9);
+      background: #fff7fa;
       font-size: 12px;
       margin-bottom: 8px;
     }
@@ -682,8 +695,8 @@
     .rsvp-side {
       padding: 12px;
       border-radius: 14px;
-      border: 1px solid rgba(55, 65, 81, 0.95);
-      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid var(--border);
+      background: #ffffff;
       font-size: 13px;
       color: var(--muted);
     }
@@ -705,14 +718,29 @@
       display: flex;
       justify-content: space-between;
       gap: 10px;
-      border-top: 1px solid rgba(55, 65, 81, 0.8);
-      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+      align-items: center;
+      flex-wrap: wrap;
     }
 
-    footer a {
-      text-decoration: underline;
-      text-decoration-style: dotted;
-      text-underline-offset: 3px;
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .footer-links a {
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      border-color: rgba(216, 166, 180, 0.9);
     }
 
     /* RESPONSIVE */
@@ -757,12 +785,12 @@
         gap: 8px;
         padding: 10px 10px 8px;
         border-radius: 18px;
-        background: rgba(15, 23, 42, 0.98);
-        border: 1px solid rgba(55, 65, 81, 0.9);
+        background: #ffffff;
+        border: 1px solid var(--border);
       }
 
       .hero {
-        padding-top: 26px;
+        padding-top: 32px;
       }
 
       .hero-title {
@@ -775,6 +803,7 @@
 
       footer {
         flex-direction: column;
+        align-items: flex-start;
       }
     }
   </style>
@@ -792,6 +821,7 @@
           <a href="#details">Details</a>
           <a href="#venues">Ceremony & Reception</a>
           <a href="#dresscode">Dress Code</a>
+          <a href="#gifts">Gifts</a>
           <a href="#rsvp">RSVP</a>
         </nav>
         <button class="nav-toggle" id="navToggle">
@@ -810,14 +840,14 @@
         <div>
           <div class="eyebrow">
             <div class="eyebrow-pill">We are getting married</div>
-            <span>Göteborg, Sweden</span>
+            <span>Gothenburg, Sweden</span>
           </div>
           <h1 class="hero-title">
             <span>The wedding of</span>
             Bozhidar &amp; Melissa
           </h1>
           <p class="hero-subtitle">
-            With great joy, we invite you to celebrate our wedding day in Göteborg.
+            With great joy, we invite you to celebrate our wedding day in Gothenburg.
             We are so excited to share this special moment with our dearest family and friends.
           </p>
 
@@ -831,13 +861,17 @@
             <div class="hero-meta-item">
               <div>
                 <div class="hero-meta-label">Ceremony</div>
-                <div class="hero-meta-value">16:00 – Annedalskyrkan</div>
+                <div class="hero-meta-value">
+                  16:00 – Annedalskyrkan, Albin Holms Backe 10
+                </div>
               </div>
             </div>
             <div class="hero-meta-item">
               <div>
                 <div class="hero-meta-label">Reception</div>
-                <div class="hero-meta-value">Venue Wedding, Angeredsvinkeln 5</div>
+                <div class="hero-meta-value">
+                  Venue Wedding, Angeredsvinkeln 5
+                </div>
               </div>
             </div>
           </div>
@@ -862,7 +896,7 @@
             <div class="hero-tagline">Countdown to our "I do"</div>
             <div class="hero-date">4 July 2026 • 16:00</div>
             <div class="hero-location">
-              Annedalskyrkan &nbsp;•&nbsp; Venue Wedding, Angeredsvinkeln 5
+              Annedalskyrkan, Albin Holms Backe 10 • Venue Wedding, Angeredsvinkeln 5
             </div>
 
             <div class="hero-countdown" id="countdown">
@@ -921,6 +955,7 @@
               <div class="timeline-main">
                 <div class="timeline-title">Guests arrive at Annedalskyrkan</div>
                 <div class="timeline-sub">
+                  Address: Albin Holms Backe 10, Gothenburg.
                   Please arrive a little early to find your seat and get settled before the ceremony begins.
                 </div>
               </div>
@@ -968,7 +1003,7 @@
         </div>
         <div class="section-body">
           <p>
-            Our wedding day will take place at two locations in and around Göteborg:
+            Our wedding day will take place at two locations in and around Gothenburg:
             the church for our ceremony, and our reception venue where we will celebrate together.
           </p>
 
@@ -978,7 +1013,7 @@
               <div class="venue-name">Annedalskyrkan</div>
               <div class="venue-address">
                 Albin Holms Backe 10<br />
-                Göteborg, Sweden
+                Gothenburg, Sweden
               </div>
               <div class="venue-meta">
                 The ceremony will start at 16:00. Please be seated a few minutes in advance.
@@ -1061,6 +1096,27 @@
         </div>
       </section>
 
+      <!-- GIFTS -->
+      <section class="section" id="gifts">
+        <div class="section-header">
+          <div class="section-title">Gifts</div>
+          <div class="section-kicker">Presents</div>
+        </div>
+        <div class="section-body">
+          <p>
+            Your presence on our wedding day is the greatest gift we could ask for.
+            We truly don’t expect anything more.
+          </p>
+          <p style="margin-top:6px;">
+            However, if you would like to honour us with a present, we would be deeply grateful
+            for a contribution to our honeymoon and future dreams together.
+          </p>
+          <p style="margin-top:6px;">
+            Practical details about how to give will be shared closer to the wedding date.
+          </p>
+        </div>
+      </section>
+
       <!-- RSVP -->
       <section class="section" id="rsvp">
         <div class="section-header">
@@ -1086,13 +1142,13 @@
               </div>
 
               <div class="rsvp-actions">
-                <!-- TODO: Replace the link below with your real RSVP form or email -->
-                <a class="chip-link" href="mailto:youremail@example.com?subject=Wedding%20RSVP%20Bozhidar%20%26%20Melissa">
+                <a class="chip-link"
+                   href="mailto:bojidarivanov98@gmail.com?subject=Wedding%20RSVP%20Bozhidar%20%26%20Melissa">
                   ✉️ RSVP via email
                 </a>
-                <button class="chip-link" type="button">
-                  🔗 RSVP form (coming soon)
-                </button>
+                <span class="chip-link">
+                  🔗 Online RSVP form (coming soon)
+                </span>
               </div>
             </div>
 
@@ -1114,9 +1170,12 @@
     <!-- FOOTER -->
     <footer>
       <div>With love, Bozhidar &amp; Melissa</div>
-      <div>
-        Back to top
-        <a href="#top">↑</a>
+      <div class="footer-links">
+        <a href="#details">The Day</a>
+        <a href="#venues">Locations</a>
+        <a href="#dresscode">Dress code</a>
+        <a href="#gifts">Gifts</a>
+        <a href="#top">Back to top ↑</a>
       </div>
     </footer>
   </div>

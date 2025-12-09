@@ -292,7 +292,7 @@
       font-weight: 600;
     }
 
-    /* NY STIL FÖR RUBRIK */
+    /* Titel-stil */
 
     .hero-title {
       font-family: "Great Vibes", cursive;
@@ -736,6 +736,43 @@
       margin-top: 6px;
     }
 
+    /* EXPLORE GOTHENBURG */
+
+    .explore-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .explore-card {
+      padding: 12px 12px 13px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .explore-name {
+      font-size: 15px;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .explore-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #9ca3af;
+    }
+
+    .explore-desc {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
     /* RSVP */
 
     .rsvp-grid {
@@ -841,7 +878,8 @@
 
       .venue-grid,
       .dress-grid,
-      .rsvp-grid {
+      .rsvp-grid,
+      .explore-grid {
         grid-template-columns: minmax(0, 1fr);
       }
     }
@@ -907,6 +945,7 @@
           <a href="#venues">Ceremony & Reception</a>
           <a href="#dresscode">Dress Code</a>
           <a href="#gifts">Gifts</a>
+          <a href="#explore">Explore Gothenburg</a>
           <a href="#rsvp">RSVP</a>
         </nav>
         <button class="nav-toggle" id="navToggle">
@@ -1202,6 +1241,88 @@
         </div>
       </section>
 
+      <!-- EXPLORE GOTHENBURG -->
+      <section class="section" id="explore">
+        <div class="section-header">
+          <div class="section-title">Explore Gothenburg</div>
+          <div class="section-kicker">Top 5 things to do</div>
+        </div>
+        <div class="section-body">
+          <p>
+            If you are spending a bit more time around our wedding, here are a few of our favourite
+            places and classic Gothenburg experiences. Perfect for a relaxed weekend before or after the big day.
+          </p>
+
+          <div class="explore-grid">
+            <div class="explore-card">
+              <div class="explore-tag">Amusement park</div>
+              <div class="explore-name">Liseberg</div>
+              <p class="explore-desc">
+                A classic Gothenburg landmark with rides, games, gardens and cosy spots to eat.
+                Great both day and night in the summer.
+              </p>
+              <a class="chip-link"
+                 href="https://www.google.com/maps/search/?api=1&query=Liseberg+Gothenburg"
+                 target="_blank" rel="noreferrer">
+                📍 Open in Google Maps
+              </a>
+            </div>
+
+            <div class="explore-card">
+              <div class="explore-tag">Old town</div>
+              <div class="explore-name">Haga</div>
+              <p class="explore-desc">
+                Cobblestone streets, wooden houses, cafés and shops. Perfect for a fika and a slow walk.
+              </p>
+              <a class="chip-link"
+                 href="https://www.google.com/maps/search/?api=1&query=Haga+Gothenburg"
+                 target="_blank" rel="noreferrer">
+                📍 Open in Google Maps
+              </a>
+            </div>
+
+            <div class="explore-card">
+              <div class="explore-tag">Park & nature</div>
+              <div class="explore-name">Slottsskogen</div>
+              <p class="explore-desc">
+                A large city park with walking paths, viewpoints and green areas. Nice for a picnic or a quiet stroll.
+              </p>
+              <a class="chip-link"
+                 href="https://www.google.com/maps/search/?api=1&query=Slottsskogen+Gothenburg"
+                 target="_blank" rel="noreferrer">
+                📍 Open in Google Maps
+              </a>
+            </div>
+
+            <div class="explore-card">
+              <div class="explore-tag">Sea & islands</div>
+              <div class="explore-name">Gothenburg Archipelago</div>
+              <p class="explore-desc">
+                Take a tram to Saltholmen and jump on a ferry out to the islands. Beautiful views and true west coast feeling.
+              </p>
+              <a class="chip-link"
+                 href="https://www.google.com/maps/search/?api=1&query=Saltholmen+terminal+Gothenburg"
+                 target="_blank" rel="noreferrer">
+                📍 Open in Google Maps
+              </a>
+            </div>
+
+            <div class="explore-card">
+              <div class="explore-tag">Science & fun</div>
+              <div class="explore-name">Universeum</div>
+              <p class="explore-desc">
+                An indoor universe with rainforests, aquariums and science experiments – fun for both adults and kids.
+              </p>
+              <a class="chip-link"
+                 href="https://www.google.com/maps/search/?api=1&query=Universeum+Gothenburg"
+                 target="_blank" rel="noreferrer">
+                📍 Open in Google Maps
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- RSVP -->
       <section class="section" id="rsvp">
         <div class="section-header">
@@ -1260,6 +1381,7 @@
         <a href="#venues">Locations</a>
         <a href="#dresscode">Dress code</a>
         <a href="#gifts">Gifts</a>
+        <a href="#explore">Explore</a>
         <a href="#top">Back to top ↑</a>
       </div>
     </footer>
@@ -1294,10 +1416,10 @@
       const diff = targetDate - now;
 
       if (diff <= 0) {
-        daysEl.textContent = "0";
-        hoursEl.textContent = "0";
-        minutesEl.textContent = "0";
-        secondsEl.textContent = "0";
+        if (daysEl)  daysEl.textContent = "0";
+        if (hoursEl) hoursEl.textContent = "0";
+        if (minutesEl) minutesEl.textContent = "0";
+        if (secondsEl) secondsEl.textContent = "0";
         return;
       }
 

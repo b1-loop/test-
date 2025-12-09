@@ -110,7 +110,7 @@
       overflow: hidden;
       letter-spacing: 0.4px;
       transition: transform 200ms ease, box-shadow 200ms ease;
-      font-size: 0; /* döljer ev. text från HTML */
+      font-size: 0;
     }
 
     .brand-mark::before {
@@ -291,8 +291,6 @@
       color: #4b1f2b;
       font-weight: 600;
     }
-
-    /* Titel-stil */
 
     .hero-title {
       font-family: "Great Vibes", cursive;
@@ -659,6 +657,57 @@
       transform: translateY(-1px);
     }
 
+    /* MENU */
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .menu-card {
+      padding: 14px 14px 15px;
+      border-radius: 18px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(148, 163, 184, 0.15);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .menu-course {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #9ca3af;
+    }
+
+    .menu-title {
+      font-size: 16px;
+      font-family: "Playfair Display", serif;
+      color: var(--text);
+    }
+
+    .menu-items {
+      list-style: none;
+      margin-top: 6px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .menu-items li::before {
+      content: "• ";
+      color: #d8a6b4;
+    }
+
+    .menu-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
     /* DRESS CODE */
 
     .dress-grid {
@@ -879,7 +928,8 @@
       .venue-grid,
       .dress-grid,
       .rsvp-grid,
-      .explore-grid {
+      .explore-grid,
+      .menu-grid {
         grid-template-columns: minmax(0, 1fr);
       }
     }
@@ -943,6 +993,7 @@
         <nav class="nav-links" id="navLinks">
           <a href="#details">Details</a>
           <a href="#venues">Ceremony & Reception</a>
+          <a href="#menu">Menu</a>
           <a href="#dresscode">Dress Code</a>
           <a href="#gifts">Gifts</a>
           <a href="#explore">Explore Gothenburg</a>
@@ -1169,6 +1220,79 @@
         </div>
       </section>
 
+      <!-- MENU -->
+      <section class="section" id="menu">
+        <div class="section-header">
+          <div class="section-title">Menu</div>
+          <div class="section-kicker">Food &amp; Drinks</div>
+        </div>
+        <div class="section-body">
+          <p>
+            We are so happy to share a menu inspired by Middle Eastern flavours, served as a festive dinner with meze,
+            main course and dessert. There will also be both non-alcoholic and alcoholic drinks on the tables.
+          </p>
+
+          <div class="menu-grid">
+            <div class="menu-card">
+              <div class="menu-course">Cold meze</div>
+              <div class="menu-title">To start the evening</div>
+              <ul class="menu-items">
+                <li>Muhammara</li>
+                <li>Tzatziki</li>
+                <li>Hummus</li>
+                <li>Fattoush</li>
+                <li>Tabbouleh</li>
+              </ul>
+              <p class="menu-note">
+                Served to share at the table.
+              </p>
+            </div>
+
+            <div class="menu-card">
+              <div class="menu-course">Warm meze</div>
+              <div class="menu-title">From the kitchen</div>
+              <ul class="menu-items">
+                <li>Kibbeh</li>
+                <li>Cheese rolls</li>
+                <li>Dolma</li>
+              </ul>
+              <p class="menu-note">
+                A warm selection to enjoy together before the main course.
+              </p>
+            </div>
+
+            <div class="menu-card">
+              <div class="menu-course">Main course</div>
+              <div class="menu-title">Chicken &amp; vegetarian option</div>
+              <ul class="menu-items">
+                <li>Grilled chicken fillet with potatoes, tomato, asparagus and sauce</li>
+                <li>Vegetarian alternative available</li>
+              </ul>
+              <p class="menu-note">
+                Please let us know in your RSVP if you prefer the vegetarian option or have any dietary requirements.
+              </p>
+            </div>
+
+            <div class="menu-card">
+              <div class="menu-course">Dessert</div>
+              <div class="menu-title">Sweet finish</div>
+              <p class="menu-note">
+                We will end the dinner with a dessert to share together, and of course something sweet to celebrate the evening.
+              </p>
+            </div>
+
+            <div class="menu-card">
+              <div class="menu-course">Drinks</div>
+              <div class="menu-title">On the tables</div>
+              <p class="menu-note">
+                There will be a mix of soft drinks and alcoholic beverages on the tables during the dinner.
+                If you prefer alcohol-free, just let us know – we are happy to arrange it.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- DRESS CODE -->
       <section class="section" id="dresscode">
         <div class="section-header">
@@ -1379,6 +1503,7 @@
       <div class="footer-links">
         <a href="#details">The Day</a>
         <a href="#venues">Locations</a>
+        <a href="#menu">Menu</a>
         <a href="#dresscode">Dress code</a>
         <a href="#gifts">Gifts</a>
         <a href="#explore">Explore</a>

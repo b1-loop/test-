@@ -78,21 +78,21 @@
     .nav-inner {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 14px 20px;
+      padding: 10px 20px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 16px;
+      gap: 20px;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 15px;
+      font-size: 13px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--muted);
+      white-space: nowrap;
     }
 
     /* --- MONOGRAM: B ♥ M --- */
@@ -169,16 +169,20 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 18px;
-      font-size: 14px;
+      justify-content: center;
+      gap: 16px;
+      font-size: 13px;
+      flex: 1;
+      flex-wrap: wrap;
     }
 
     .nav-links a {
       position: relative;
-      padding: 6px 2px;
+      padding: 4px 4px;
       color: var(--muted);
       transition: color var(--transition), transform var(--transition),
         letter-spacing var(--transition);
+      white-space: nowrap;
     }
 
     .nav-links a::after {
@@ -198,7 +202,7 @@
     .nav-links a:hover {
       color: var(--text);
       transform: translateY(-1px);
-      letter-spacing: 0.14em;
+      letter-spacing: 0.08em;
     }
 
     .nav-links a:hover::after {
@@ -206,12 +210,13 @@
     }
 
     .nav-cta {
+      margin-left: auto;
       padding: 7px 16px;
       border-radius: var(--radius-pill);
       border: 1px solid rgba(216, 166, 180, 0.9);
       background: radial-gradient(circle at top left, #ffffff 0, #e9c4cf 30%, #f8e3e8 85%);
       color: #4b1f2b;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.16em;
@@ -222,17 +227,18 @@
       cursor: pointer;
       transition: transform var(--transition), box-shadow var(--transition),
         filter var(--transition);
+      white-space: nowrap;
     }
 
     .nav-cta span {
-      font-size: 11px;
+      font-size: 10px;
       opacity: 0.8;
     }
 
     .nav-cta:hover {
       transform: translateY(-1px) scale(1.01);
       filter: brightness(1.03);
-      box-shadow: 0 22px 55px rgba(148, 163, 184, 0.45);
+      box-shadow: 0 18px 45px rgba(148, 163, 184, 0.45);
     }
 
     .nav-toggle {
@@ -926,7 +932,7 @@
       margin-bottom: 4px;
     }
 
-    /* --- FADE IN FOR SECTIONS (USED ON SPOTIFY SECTION) --- */
+    /* --- FADE IN FOR SPOTIFY SECTION --- */
     .fade-in {
       opacity: 0;
       transform: translateY(12px);
@@ -1086,13 +1092,12 @@
         </div>
         <nav class="nav-links" id="navLinks">
           <a href="#details">Details</a>
-          <a href="#venues">Ceremony & Reception</a>
+          <a href="#venues">Ceremony</a>
           <a href="#menu">Menu</a>
-          <a href="#dresscode">Dress Code</a>
+          <a href="#dresscode">Dress code</a>
           <a href="#traditions">Celebration</a>
-          <a href="#mood">Get in the Mood</a>
-          <a href="#gifts">Gifts</a>
-          <a href="#explore">Explore Gothenburg</a>
+          <a href="#mood">Playlist</a>
+          <a href="#explore">Explore</a>
           <a href="#toastmasters">Toastmasters</a>
           <a href="#rsvp">RSVP</a>
         </nav>
@@ -1153,7 +1158,7 @@
               RSVP to our day
               <svg viewBox="0 0 20 20" aria-hidden="true">
                 <path fill="currentColor"
-                  d="M4 10.5h8.793l-3.647 3.646a.5.5 0 1 0 .708.708l4.5-4.5a.498.498 0 0 0 0-.708l-4.5-4.5a.5.5 0 1 0-.708.708L12.793 9.5H4a.5.5 0 0 0 0 1Z" />
+                      d="M4 10.5h8.793l-3.647 3.646a.5.5 0 1 0 .708.708l4.5-4.5a.498.498 0 0 0 0-.708l-4.5-4.5a.5.5 0 1 0-.708.708L12.793 9.5H4a.5.5 0 0 0 0 1Z" />
               </svg>
             </button>
             <button class="btn-ghost" onclick="document.getElementById('venues').scrollIntoView({behavior:'smooth'})">
@@ -1756,4 +1761,3 @@
   </script>
 </body>
 </html>
-

@@ -926,6 +926,53 @@
       margin-bottom: 4px;
     }
 
+    /* --- FADE IN FOR SECTIONS (USED ON SPOTIFY SECTION) --- */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeInSmooth 1.2s ease forwards;
+    }
+
+    @keyframes fadeInSmooth {
+      0% { opacity: 0; transform: translateY(14px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --- SPOTIFY BUTTON --- */
+    .spotify-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 22px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #ffffff, #f4efe9);
+      color: #7a6259;
+      border: 1px solid #e8e1d9;
+      box-shadow: 0 4px 12px rgba(180, 160, 140, 0.25);
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+
+    .spotify-btn:hover {
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 10px 20px rgba(180, 160, 140, 0.38);
+      background: linear-gradient(135deg, #fefcfa, #f1e9e1);
+    }
+
+    .spotify-icon {
+      width: 18px;
+      height: 18px;
+      display: block;
+      filter: brightness(0.5);
+      transition: filter 0.2s ease;
+    }
+
+    .spotify-btn:hover .spotify-icon {
+      filter: brightness(0.3);
+    }
+
     /* FOOTER */
 
     footer {
@@ -1043,6 +1090,7 @@
           <a href="#menu">Menu</a>
           <a href="#dresscode">Dress Code</a>
           <a href="#traditions">Celebration</a>
+          <a href="#mood">Get in the Mood</a>
           <a href="#gifts">Gifts</a>
           <a href="#explore">Explore Gothenburg</a>
           <a href="#toastmasters">Toastmasters</a>
@@ -1393,7 +1441,7 @@
         </div>
       </section>
 
-  <!-- CELEBRATION & TRADITIONS -->
+      <!-- CELEBRATION & TRADITIONS -->
       <section class="section" id="traditions">
         <div class="section-header">
           <div class="section-title">Celebration &amp; Traditions</div>
@@ -1415,6 +1463,33 @@
             Please feel free to go all in, dance, laugh and celebrate with us – this is your invitation to
             really enjoy the night.
           </div>
+        </div>
+      </section>
+
+      <!-- GET IN THE MOOD -->
+      <section class="section fade-in" id="mood">
+        <div class="section-header">
+          <div class="section-title">Get in the Mood</div>
+          <div class="section-kicker">Wedding vibes</div>
+        </div>
+
+        <div class="section-body">
+          <p>
+            Warm up for the big day with our wedding playlist – a mix of songs we love,
+            dance-floor classics, and music that brings together Lebanese, Bulgarian
+            and international vibes.
+          </p>
+
+          <a class="spotify-btn"
+             href="https://open.spotify.com/playlist/6vlW4I5jbTenW7kZI7i7fX?si=dP54Hph5SDenyJWc3N7Mcg"
+             target="_blank" rel="noreferrer">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg"
+              alt="Spotify"
+              class="spotify-icon"
+            />
+            Listen on Spotify
+          </a>
         </div>
       </section>
 
@@ -1619,6 +1694,7 @@
         <a href="#menu">Menu</a>
         <a href="#dresscode">Dress code</a>
         <a href="#traditions">Celebration</a>
+        <a href="#mood">Playlist</a>
         <a href="#gifts">Gifts</a>
         <a href="#explore">Explore</a>
         <a href="#toastmasters">Toastmasters</a>
@@ -1680,3 +1756,4 @@
   </script>
 </body>
 </html>
+

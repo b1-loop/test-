@@ -779,6 +779,22 @@
       margin-bottom: 4px;
     }
 
+    /* TRADITIONS */
+
+    .traditions-highlight {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px dashed rgba(216, 166, 180, 0.7);
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .traditions-highlight strong {
+      color: #b65f7c;
+    }
+
     /* GIFTS */
 
     .section#gifts p + p {
@@ -819,6 +835,37 @@
 
     .explore-desc {
       font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* TOASTMASTERS */
+
+    .toastmasters-list {
+      list-style: none;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .toastmasters-list li {
+      margin-bottom: 8px;
+    }
+
+    .toastmasters-role {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #9ca3af;
+    }
+
+    .toastmasters-name {
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .toastmasters-phone a {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-style: dotted;
       color: var(--muted);
     }
 
@@ -995,8 +1042,10 @@
           <a href="#venues">Ceremony & Reception</a>
           <a href="#menu">Menu</a>
           <a href="#dresscode">Dress Code</a>
+          <a href="#traditions">Celebration</a>
           <a href="#gifts">Gifts</a>
           <a href="#explore">Explore Gothenburg</a>
+          <a href="#toastmasters">Toastmasters</a>
           <a href="#rsvp">RSVP</a>
         </nav>
         <button class="nav-toggle" id="navToggle">
@@ -1344,6 +1393,31 @@
         </div>
       </section>
 
+  <!-- CELEBRATION & TRADITIONS -->
+      <section class="section" id="traditions">
+        <div class="section-header">
+          <div class="section-title">Celebration &amp; Traditions</div>
+          <div class="section-kicker">Bulgarian &amp; Lebanese vibes</div>
+        </div>
+        <div class="section-body">
+          <p>
+            Our wedding will be a mix of Bulgarian and Lebanese traditions – a celebration full of music,
+            rhythm and a lot of dancing. You can expect both classic party hits and songs that are close to our hearts.
+          </p>
+          <p>
+            During the evening there will be a traditional Lebanese zaffe entrance, energetic dabke,
+            lots of Bulgarian horo and more surprises along the way.
+            You absolutely don’t need to know the steps – just join in, follow the crowd and enjoy the moment.
+          </p>
+
+          <div class="traditions-highlight">
+            <strong>Most important of all:</strong> we want the dance floor to be alive.
+            Please feel free to go all in, dance, laugh and celebrate with us – this is your invitation to
+            really enjoy the night.
+          </div>
+        </div>
+      </section>
+
       <!-- GIFTS -->
       <section class="section" id="gifts">
         <div class="section-header">
@@ -1447,6 +1521,45 @@
         </div>
       </section>
 
+      <!-- TOASTMASTERS & CONTACT -->
+      <section class="section" id="toastmasters">
+        <div class="section-header">
+          <div class="section-title">Toastmasters &amp; Contact</div>
+          <div class="section-kicker">For speeches &amp; surprises</div>
+        </div>
+        <div class="section-body">
+          <p>
+            If you would like to hold a speech, plan a surprise, a game or anything else during the evening,
+            we kindly ask you to contact our toastmasters instead of contacting us directly.
+          </p>
+          <p>
+            They will help coordinate the flow of the evening so everything feels smooth and joyful.
+          </p>
+
+          <ul class="toastmasters-list">
+            <li>
+              <div class="toastmasters-role">Toastmaster</div>
+              <div class="toastmasters-name">Rajan Mahdavi</div>
+              <div class="toastmasters-phone">
+                Phone: <a href="tel:+46721802607">+46 72 180 26 07</a>
+              </div>
+            </li>
+            <li>
+              <div class="toastmasters-role">Toastmaster</div>
+              <div class="toastmasters-name">Marianne Jakob</div>
+              <div class="toastmasters-phone">
+                Phone: <a href="tel:+46765576156">+46 76 557 61 56</a>
+              </div>
+            </li>
+          </ul>
+
+          <p class="menu-note">
+            For practical questions about the day (times, locations, special needs),
+            you are of course welcome to contact us or the toastmasters.
+          </p>
+        </div>
+      </section>
+
       <!-- RSVP -->
       <section class="section" id="rsvp">
         <div class="section-header">
@@ -1505,8 +1618,10 @@
         <a href="#venues">Locations</a>
         <a href="#menu">Menu</a>
         <a href="#dresscode">Dress code</a>
+        <a href="#traditions">Celebration</a>
         <a href="#gifts">Gifts</a>
         <a href="#explore">Explore</a>
+        <a href="#toastmasters">Toastmasters</a>
         <a href="#top">Back to top ↑</a>
       </div>
     </footer>

@@ -94,19 +94,77 @@
       text-transform: uppercase;
       color: var(--muted);
     }
+.brand-mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #ffffff, #f4efe9);
+  display: grid;
+  place-items: center;
+  font-family: "Playfair Display", serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #7a6259; /* Soft beige/brown */
+  border: 1px solid #e8e1d9;
+  box-shadow: 0 4px 14px rgba(180, 160, 140, 0.25);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.4px;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
 
-    .brand-mark {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      border: 1px solid rgba(209, 213, 219, 0.8);
-      display: grid;
-      place-items: center;
-      font-size: 13px;
-      background: radial-gradient(circle at 30% 0, #ffffff 0, #f3d5dd 30%, #fdf7f4 80%);
-      color: #4b5563;
-      font-weight: 600;
-      box-shadow: 0 4px 12px rgba(148, 163, 184, 0.4);
+/* Texten – B ♥ M */
+.brand-mark::before {
+  content: "B ♥ M";
+  position: relative;
+  z-index: 2;
+}
+
+/* Shine animation (soft idle) */
+.brand-mark::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.55),
+    transparent
+  );
+  transform: skewX(-18deg);
+  animation: shineIdle 4s infinite ease-in-out;
+  opacity: 0.9;
+  z-index: 1;
+}
+
+/* Hover: lyfter + extra glimmer */
+.brand-mark:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 18px rgba(180, 160, 140, 0.32);
+}
+
+.brand-mark:hover::after {
+  animation: shineHover 1.4s ease-in-out;
+  opacity: 1;
+}
+
+/* Idle shine */
+@keyframes shineIdle {
+  0% { left: -80%; }
+  50% { left: 130%; }
+  100% { left: 130%; }
+}
+
+/* Hover shine */
+@keyframes shineHover {
+  0% { left: -80%; opacity: 0.6; }
+  50% { left: 130%; opacity: 1; }
+  100% { left: 130%; opacity: 0.7; }
+}
+  
     }
 
     .nav-links {

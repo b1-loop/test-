@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&family=Great+Vibes&display=swap"
     rel="stylesheet"
   />
 
@@ -96,10 +96,9 @@
     }
 
     /* --- MONOGRAM: B ♥ M --- */
-
     .brand-mark {
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       background: linear-gradient(145deg, #ffffff, #f4efe9);
       display: grid;
@@ -111,16 +110,17 @@
       overflow: hidden;
       letter-spacing: 0.4px;
       transition: transform 200ms ease, box-shadow 200ms ease;
-      font-size: 0; /* ta bort ev. text från HTML */
+      font-size: 0; /* döljer ev. text från HTML */
     }
 
     .brand-mark::before {
       content: "B ♥ M";
       position: relative;
       z-index: 2;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 600;
       color: #7a6259;
+      white-space: nowrap;
     }
 
     .brand-mark::after {
@@ -292,22 +292,25 @@
       font-weight: 600;
     }
 
+    /* NY STIL FÖR RUBRIK */
+
     .hero-title {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(40px, 5vw, 52px);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(48px, 6vw, 64px);
+      letter-spacing: 0.03em;
+      text-transform: none;
+      line-height: 1.1;
       margin-bottom: 12px;
     }
 
     .hero-title span {
       display: block;
       font-family: "Poppins", sans-serif;
-      font-size: 0.72em;
-      letter-spacing: 0.22em;
+      font-size: 0.7em;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 6px;
+      margin-bottom: 10px;
     }
 
     .hero-subtitle {
@@ -876,7 +879,7 @@
       }
 
       .hero-title {
-        font-size: 32px;
+        font-size: 40px;
       }
 
       .section {
@@ -1304,10 +1307,10 @@
       const minutes = Math.floor((totalSeconds % 3600) / 60);
       const seconds = totalSeconds % 60;
 
-      daysEl.textContent = days;
-      hoursEl.textContent = hours;
-      minutesEl.textContent = minutes;
-      secondsEl.textContent = seconds;
+      if (daysEl) daysEl.textContent = days;
+      if (hoursEl) hoursEl.textContent = hours;
+      if (minutesEl) minutesEl.textContent = minutes;
+      if (secondsEl) secondsEl.textContent = seconds;
     }
 
     updateCountdown();

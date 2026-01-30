@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bozhidar & Melissa – Wedding</title>
 
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23d8a6b4'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%237b1113'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,12 +16,11 @@
 
   <style>
     :root {
-      /* Pappers-tema färger */
+      /* Hemsidans färger */
       --bg: #f5f2ec;
       --bg-soft: #fffdf9; 
       --card: #ffffff;
-      --accent: #d8a6b4; /* Rosa accent */
-      --accent-dark: #b68895; /* Mörkare för skuggor */
+      --accent: #d8a6b4;
       --accent-soft: rgba(216, 166, 180, 0.16);
       --text: #2c2724; 
       --muted: #756f6b;
@@ -31,6 +30,11 @@
       --radius-pill: 999px;
       --max-width: 1120px;
       --transition: 220ms ease;
+
+      /* Kuvert & Sigill färger */
+      --wax-red: #7b1113; /* Djup vaxröd */
+      --wax-shadow: #4a0a0b;
+      --envelope-paper: #f0ebe5;
     }
 
     * {
@@ -39,114 +43,136 @@
       padding: 0;
     }
 
-    /* --- KUVERT / ÖPPNINGS ANIMATION CSS --- */
+    /* ------------------------------
+       KUVERT & SIGILL (ENVELOPE)
+    ------------------------------ */
     
-    /* Behållaren för hela introt */
     .envelope-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: 99999; /* Allra högst upp */
+      z-index: 99999;
       display: flex;
       justify-content: center;
       align-items: center;
       overflow: hidden;
-      /* Om JavaScript är avstängt eller misslyckas, dölj introt så sidan går att använda */
-      pointer-events: auto;
+      /* Säkerställ att man kan klicka igenom om JS skulle fela, men normalt hanterar JS detta */
+      pointer-events: auto; 
     }
 
-    /* Pappers-halvorna */
+    /* Textur för pappret (använder SVG-brus för realism) */
+    .paper-texture {
+      background-color: var(--envelope-paper);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E");
+    }
+
+    /* Övre och undre halvan som glider isär */
     .envelope-flap {
       position: absolute;
       left: 0;
       width: 100%;
-      height: 50.5%; /* Lite överlapp för att undvika glipor */
-      background-color: #f0ece6; /* Lite mörkare än sidans bakgrund för kontrast */
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      height: 50.5%;
       z-index: 1;
-      transition: transform 1.5s cubic-bezier(0.7, 0, 0.3, 1);
-      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+      transition: transform 1.2s cubic-bezier(0.75, 0, 0.25, 1);
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
 
     .envelope-top {
       top: 0;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
       transform-origin: top;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
     }
 
     .envelope-bottom {
       bottom: 0;
-      border-top: 1px solid rgba(255,255,255,0.8);
       transform-origin: bottom;
+      border-top: 1px solid rgba(255,255,255,0.4);
     }
 
-    /* Lack-sigillet */
-    .wax-seal {
-      position: relative;
+    /* Vax-sigillet (Wax Seal) */
+    .wax-seal-container {
+      position: absolute;
       z-index: 10;
-      width: 120px;
-      height: 120px;
-      background: var(--accent);
-      border-radius: 50%;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       cursor: pointer;
-      box-shadow: 
-        inset 0 0 20px rgba(0,0,0,0.2), /* Inre djup */
-        0 4px 6px rgba(0,0,0,0.1), /* Yttre skugga */
-        0 0 0 6px rgba(216, 166, 180, 0.4); /* Yttre ring */
-      border: 2px solid rgba(255,255,255,0.3);
-      transition: transform 0.4s ease, opacity 0.8s ease;
-      /* Oregelbunden form för vax-look (optional) */
-      clip-path: circle(50% at 50% 50%); 
+      transition: transform 0.3s ease, opacity 0.5s ease;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .wax-seal:hover {
+    .wax-seal-container:hover {
       transform: scale(1.05);
     }
 
-    /* Texten i sigillet */
-    .wax-seal-initials {
-      font-family: "Great Vibes", cursive;
-      font-size: 38px;
-      color: #fff;
-      text-shadow: 1px 1px 2px rgba(139, 88, 103, 0.6);
-      line-height: 0.8;
-      margin-top: 6px;
-    }
-    
-    .wax-seal-text {
-      font-family: "Poppins", sans-serif;
-      font-size: 9px;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: rgba(255,255,255,0.85);
-      margin-top: 4px;
+    .wax-seal {
+      width: 140px;
+      height: 140px;
+      background: var(--wax-red);
+      border-radius: 50%;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 
+        inset 0 0 20px rgba(0,0,0,0.5), /* Inre djup */
+        inset 2px 2px 5px rgba(255,255,255,0.2), /* Ljusreflektion kant */
+        0 5px 15px rgba(0,0,0,0.25), /* Skugga mot papper */
+        0 0 0 6px rgba(123, 17, 19, 0.7); /* Ojämn kant-effekt */
+      border: 1px solid rgba(0,0,0,0.1);
     }
 
-    /* Animation för att locka till klick */
+    /* För att göra kanten lite mer "oorganisk" (frivilligt) */
     .wax-seal::after {
       content: "";
       position: absolute;
-      top: -10px; left: -10px; right: -10px; bottom: -10px;
+      top: -4px; left: -4px; right: -4px; bottom: -4px;
       border-radius: 50%;
-      border: 1px solid var(--accent);
-      opacity: 0;
-      animation: pulse-ring 2s infinite;
+      border: 1px dashed rgba(123, 17, 19, 0.6);
+      opacity: 0.6;
+      animation: pulse-border 3s infinite;
     }
 
-    @keyframes pulse-ring {
-      0% { transform: scale(0.8); opacity: 0.8; }
-      100% { transform: scale(1.3); opacity: 0; }
+    @keyframes pulse-border {
+      0% { transform: scale(1); opacity: 0.4; }
+      50% { transform: scale(1.02); opacity: 0.7; }
+      100% { transform: scale(1); opacity: 0.4; }
     }
 
-    /* --- KLASSER FÖR NÄR DET ÖPPNAS --- */
+    /* Innehåll i sigillet */
+    .wax-content {
+      text-align: center;
+      color: #5a0b0d; /* Mörkare röd för "intryckt" effekt */
+      /* Denna text-shadow skapar deboss/gravyr-effekten */
+      text-shadow: 
+        1px 1px 0px rgba(255, 255, 255, 0.15), 
+        -1px -1px 0px rgba(0, 0, 0, 0.3);
+    }
+
+    .wax-initials {
+      font-family: "Great Vibes", cursive;
+      font-size: 52px;
+      line-height: 1;
+      margin-top: 5px;
+      font-weight: normal;
+    }
+
+    .wax-text {
+      font-family: "Poppins", sans-serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      margin-top: 2px;
+      opacity: 0.8;
+      font-weight: 600;
+    }
+
+    /* Animation när man öppnar */
     .envelope-overlay.open {
-      pointer-events: none; /* Släpp igenom klick till sidan */
+      pointer-events: none;
     }
 
     .envelope-overlay.open .envelope-top {
@@ -157,31 +183,35 @@
       transform: translateY(100%);
     }
 
-    .envelope-overlay.open .wax-seal {
-      transform: scale(0.5);
+    .envelope-overlay.open .wax-seal-container {
       opacity: 0;
+      transform: scale(1.5); /* Växer och försvinner */
+      pointer-events: none;
+    }
+    
+    /* Klass för att dölja direkt om besökt tidigare */
+    .hidden {
+      display: none !important;
     }
 
-    /* --- DÖLJ INTROT OM DET REDAN ÄR SETT (via JS) --- */
-    .envelope-overlay.hidden {
-      display: none;
-    }
 
-    /* --- STANDARD SID-CSS --- */
-
-    /* SCROLL ANIMATION CSS */
+    /* ------------------------------
+       HEMSIDA (STANDARD STYLES)
+    ------------------------------ */
+    
+    /* SCROLL ANIMATION CSS (Punkt 3) */
     .reveal {
       opacity: 0;
-      transform: translateY(40px);
-      transition: all 1s ease-out;
+      transform: translateY(40px); /* Startar lite längre ner */
+      transition: all 1s ease-out; /* Mjuk övergång på 1 sekund */
     }
 
     .reveal.active {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0); /* Återgår till sin plats */
     }
 
-    /* PAPPERS-TEXTUR */
+    /* PAPPERS-TEXTUR PÅ HEMSIDAN */
     body::before {
       content: "";
       position: fixed;
@@ -204,7 +234,7 @@
       color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
+      overflow-x: hidden; /* Förhindrar sido-scroll under animation */
     }
 
     a {
@@ -231,7 +261,7 @@
       backdrop-filter: blur(12px);
       background: rgba(253, 252, 249, 0.85);
       border-bottom: 1px solid rgba(0,0,0,0.03);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease; /* För mjuk inflygning */
     }
 
     .nav-inner {
@@ -1289,15 +1319,22 @@
 </head>
 <body>
 
-  <div id="envelopeOverlay" class="envelope-overlay">
-    <div class="envelope-flap envelope-top"></div>
-    <div class="envelope-flap envelope-bottom"></div>
+  <div id="envelopeOverlay" class="envelope-overlay paper-texture">
+    <div class="envelope-flap envelope-top paper-texture"></div>
     
-    <button class="wax-seal" onclick="openEnvelope()" title="Open invitation">
-      <div class="wax-seal-initials">B&M</div>
-      <div class="wax-seal-text">Open</div>
-    </button>
+    <div class="envelope-flap envelope-bottom paper-texture"></div>
+    
+    <div class="wax-seal-container" onclick="openEnvelope()" title="Open invitation">
+      <div class="wax-seal">
+        <div class="wax-content">
+          <div class="wax-initials">B&M</div>
+          <div class="wax-text">OPEN</div>
+        </div>
+      </div>
+    </div>
   </div>
+
+
   <div class="page" id="top">
     <header class="nav reveal">
       <div class="nav-inner">
@@ -1916,14 +1953,16 @@ Let’s laugh, dance, and celebrate together — this night holds a very special
   </div>
 
   <script>
-    // --- ENVELOPE OPENING LOGIC ---
+    // ------------------------------------------------
+    // 1. KUVERT-LOGIK (ENVELOPE)
+    // ------------------------------------------------
     function checkEnvelope() {
-      // Check session storage to see if user has already opened the invite in this session
+      // Kollar om användaren redan har öppnat brevet i denna "session" (tabb)
       const hasOpened = sessionStorage.getItem("weddingInviteOpened");
       const envelope = document.getElementById("envelopeOverlay");
 
       if (hasOpened) {
-        // If already opened, hide immediately without animation
+        // Om redan öppnat, dölj direkt (ingen animation)
         envelope.classList.add("hidden");
       }
     }
@@ -1931,23 +1970,25 @@ Let’s laugh, dance, and celebrate together — this night holds a very special
     function openEnvelope() {
       const envelope = document.getElementById("envelopeOverlay");
       
-      // Start animation
+      // Lägg till klass som startar CSS-animationen (flikarna åker isär)
       envelope.classList.add("open");
 
-      // Save to session storage so they don't have to open it again on reload
+      // Spara att vi har öppnat, så vi slipper se det vid omladdning
       sessionStorage.setItem("weddingInviteOpened", "true");
 
-      // Remove from DOM after animation completes to free up resources
+      // Ta bort elementet helt efter animationen så det inte ligger i vägen
       setTimeout(() => {
         envelope.style.display = "none";
-      }, 1500);
+      }, 1500); // 1.5 sekunder matchar CSS-transitionen
     }
 
-    // Run check immediately
+    // Kör kontrollen direkt
     checkEnvelope();
 
 
-    // --- MOBILE NAV ---
+    // ------------------------------------------------
+    // 2. MOBIL-MENY
+    // ------------------------------------------------
     const navToggle = document.getElementById("navToggle");
     const navLinks = document.getElementById("navLinks");
 
@@ -1963,7 +2004,9 @@ Let’s laugh, dance, and celebrate together — this night holds a very special
       });
     }
 
-    // --- COUNTDOWN ---
+    // ------------------------------------------------
+    // 3. NEDRÄKNING (COUNTDOWN)
+    // ------------------------------------------------
     const targetDate = new Date("2026-07-04T16:00:00");
     const daysEl = document.getElementById("days");
     const hoursEl = document.getElementById("hours");
@@ -1997,7 +2040,9 @@ Let’s laugh, dance, and celebrate together — this night holds a very special
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // --- SCROLL REVEAL ANIMATION ---
+    // ------------------------------------------------
+    // 4. SCROLL REVEAL (Animation vid scroll)
+    // ------------------------------------------------
     const observerOptions = {
       threshold: 0.1,
       rootMargin: "0px 0px -50px 0px"

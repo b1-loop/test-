@@ -33,8 +33,7 @@
 
       /* Kuvert & Sigill färger */
       --wax-red: #7b1113; /* Djup vaxröd */
-      --wax-red-light: #9c2a2c; /* Ljusare röd för gradient */
-      --wax-text-dark: #4a0a0b; /* Mörk färg för intryckt text */
+      --wax-shadow: #4a0a0b;
       --envelope-paper: #f0ebe5;
     }
 
@@ -59,6 +58,7 @@
       justify-content: center;
       align-items: center;
       overflow: hidden;
+      /* Säkerställ att man kan klicka igenom om JS skulle fela, men normalt hanterar JS detta */
       pointer-events: auto; 
     }
 
@@ -91,7 +91,7 @@
       border-top: 1px solid rgba(255,255,255,0.4);
     }
 
-    /* Vax-sigillet (Wax Seal) Container */
+    /* Vax-sigillet (Wax Seal) */
     .wax-seal-container {
       position: absolute;
       z-index: 10;
@@ -102,93 +102,71 @@
       cursor: pointer;
       transition: transform 0.3s ease, opacity 0.5s ease;
       -webkit-tap-highlight-color: transparent;
-      /* Filter för att skapa skugga runt den oregelbundna formen */
-      filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.3));
     }
 
     .wax-seal-container:hover {
-      transform: scale(1.03);
+      transform: scale(1.05);
     }
 
-    /* Själva sigillet med oregelbunden form */
     .wax-seal {
-      width: 150px;
-      height: 150px;
-      /* Radial gradient för att skapa en 3D-känsla av smält vax */
-      background: radial-gradient(circle at 30% 30%, var(--wax-red-light), var(--wax-red));
+      width: 140px;
+      height: 140px;
+      background: var(--wax-red);
+      border-radius: 50%;
       position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
-      /* Komplex clip-path för att skapa den oregelbundna vax-formen */
-      clip-path: polygon(
-        50% 0%, 61% 4%, 72% 2%, 83% 8%, 92% 18%, 98% 30%, 100% 44%, 96% 58%, 
-        90% 70%, 81% 82%, 69% 91%, 56% 97%, 42% 100%, 28% 98%, 16% 92%, 7% 83%, 
-        1% 71%, 0% 56%, 3% 41%, 9% 28%, 18% 17%, 30% 7%, 41% 2%
-      );
+      box-shadow: 
+        inset 0 0 20px rgba(0,0,0,0.5), /* Inre djup */
+        inset 2px 2px 5px rgba(255,255,255,0.2), /* Ljusreflektion kant */
+        0 5px 15px rgba(0,0,0,0.25), /* Skugga mot papper */
+        0 0 0 6px rgba(123, 17, 19, 0.7); /* Ojämn kant-effekt */
+      border: 1px solid rgba(0,0,0,0.1);
     }
 
-    /* Inre "ring" för extra djup */
-    .wax-seal::before {
-      content: "";
-      position: absolute;
-      top: 10px; left: 10px; right: 10px; bottom: 10px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 50% 50%, var(--wax-red) 60%, var(--wax-text-dark) 100%);
-      opacity: 0.2;
-      filter: blur(2px);
-    }
-
-    /* Pulserande effekt (oregelbunden) */
+    /* För att göra kanten lite mer "oorganisk" (frivilligt) */
     .wax-seal::after {
       content: "";
       position: absolute;
-      top: -5px; left: -5px; right: -5px; bottom: -5px;
-      background: var(--wax-red);
-      opacity: 0.4;
-      /* Samma clip-path som sigillet */
-      clip-path: polygon(
-        50% 0%, 61% 4%, 72% 2%, 83% 8%, 92% 18%, 98% 30%, 100% 44%, 96% 58%, 
-        90% 70%, 81% 82%, 69% 91%, 56% 97%, 42% 100%, 28% 98%, 16% 92%, 7% 83%, 
-        1% 71%, 0% 56%, 3% 41%, 9% 28%, 18% 17%, 30% 7%, 41% 2%
-      );
-      animation: pulse-wax 2.5s infinite;
-      z-index: -1;
+      top: -4px; left: -4px; right: -4px; bottom: -4px;
+      border-radius: 50%;
+      border: 1px dashed rgba(123, 17, 19, 0.6);
+      opacity: 0.6;
+      animation: pulse-border 3s infinite;
     }
 
-    @keyframes pulse-wax {
+    @keyframes pulse-border {
       0% { transform: scale(1); opacity: 0.4; }
-      50% { transform: scale(1.05); opacity: 0.6; }
+      50% { transform: scale(1.02); opacity: 0.7; }
       100% { transform: scale(1); opacity: 0.4; }
     }
 
-    /* Innehåll i sigillet (Text) */
+    /* Innehåll i sigillet */
     .wax-content {
       text-align: center;
-      position: relative;
-      z-index: 2;
-      color: var(--wax-text-dark);
-      /* Denna text-shadow skapar den "intryckta" (debossed) effekten */
+      color: #5a0b0d; /* Mörkare röd för "intryckt" effekt */
+      /* Denna text-shadow skapar deboss/gravyr-effekten */
       text-shadow: 
-        1px 1px 0px rgba(255, 255, 255, 0.25), /* Ljus highlight nere till höger */
-        -1px -1px 1px rgba(0, 0, 0, 0.4); /* Mörk skugga uppe till vänster */
+        1px 1px 0px rgba(255, 255, 255, 0.15), 
+        -1px -1px 0px rgba(0, 0, 0, 0.3);
     }
 
     .wax-initials {
       font-family: "Great Vibes", cursive;
-      font-size: 56px;
-      line-height: 0.9;
-      margin-top: 8px;
+      font-size: 52px;
+      line-height: 1;
+      margin-top: 5px;
       font-weight: normal;
     }
 
     .wax-text {
       font-family: "Poppins", sans-serif;
-      font-size: 11px;
+      font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 0.25em;
-      margin-top: 4px;
-      opacity: 0.9;
+      margin-top: 2px;
+      opacity: 0.8;
       font-weight: 600;
     }
 
@@ -207,9 +185,8 @@
 
     .envelope-overlay.open .wax-seal-container {
       opacity: 0;
-      transform: scale(1.2); 
+      transform: scale(1.5); /* Växer och försvinner */
       pointer-events: none;
-      transition: transform 0.8s ease, opacity 0.8s ease;
     }
     
     /* Klass för att dölja direkt om besökt tidigare */

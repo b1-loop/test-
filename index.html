@@ -1,1761 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bozhidar & Melissa – Wedding</title>
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&family=Great+Vibes&display=swap"
-    rel="stylesheet"
-  />
-
-  <style>
-    :root {
-      --bg: #f5f2ec;
-      --bg-soft: #fdfbf7;
-      --card: #ffffff;
-      --accent: #d8a6b4;
-      --accent-soft: rgba(216, 166, 180, 0.16);
-      --text: #1f2933;
-      --muted: #6b7280;
-      --border: #e5e7eb;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.08);
-      --radius-lg: 18px;
-      --radius-pill: 999px;
-      --max-width: 1120px;
-      --transition: 220ms ease;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #faf6f0 0, #f5f2ec 40%, #f1ebe2 100%);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .page {
-      min-height: 100vh;
-    }
-
-    /* NAVBAR */
-
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 40;
-      backdrop-filter: blur(18px);
-      background: linear-gradient(
-        to bottom,
-        rgba(253, 252, 249, 0.96),
-        rgba(253, 252, 249, 0.92),
-        transparent
-      );
-      border-bottom: 1px solid rgba(229, 231, 235, 0.9);
-    }
-
-    .nav-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 13px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      white-space: nowrap;
-    }
-
-    /* --- MONOGRAM: B ♥ M --- */
-    .brand-mark {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: linear-gradient(145deg, #ffffff, #f4efe9);
-      display: grid;
-      place-items: center;
-      font-family: "Playfair Display", serif;
-      border: 1px solid #e8e1d9;
-      box-shadow: 0 4px 14px rgba(180, 160, 140, 0.25);
-      position: relative;
-      overflow: hidden;
-      letter-spacing: 0.4px;
-      transition: transform 200ms ease, box-shadow 200ms ease;
-      font-size: 0;
-    }
-
-    .brand-mark::before {
-      content: "B ♥ M";
-      position: relative;
-      z-index: 2;
-      font-size: 15px;
-      font-weight: 600;
-      color: #7a6259;
-      white-space: nowrap;
-    }
-
-    .brand-mark::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -80%;
-      width: 70%;
-      height: 100%;
-      background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255, 255, 255, 0.55),
-        transparent
-      );
-      transform: skewX(-18deg);
-      animation: shineIdle 4s infinite ease-in-out;
-      opacity: 0.9;
-      z-index: 1;
-    }
-
-    .brand-mark:hover {
-      transform: translateY(-2px) scale(1.05);
-      box-shadow: 0 6px 18px rgba(180, 160, 140, 0.32);
-    }
-
-    .brand-mark:hover::after {
-      animation: shineHover 1.4s ease-in-out;
-      opacity: 1;
-    }
-
-    @keyframes shineIdle {
-      0% { left: -80%; }
-      50% { left: 130%; }
-      100% { left: 130%; }
-    }
-
-    @keyframes shineHover {
-      0% { left: -80%; opacity: 0.6; }
-      50% { left: 130%; opacity: 1; }
-      100% { left: 130%; opacity: 0.7; }
-    }
-
-    /* NAV-LINKS */
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      font-size: 13px;
-      flex: 1;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      position: relative;
-      padding: 4px 4px;
-      color: var(--muted);
-      transition: color var(--transition), transform var(--transition),
-        letter-spacing var(--transition);
-      white-space: nowrap;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 2px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #e9c4cf, #d1b59a);
-      transform: scaleX(0);
-      transform-origin: center;
-      transition: transform 220ms ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-      transform: translateY(-1px);
-      letter-spacing: 0.08em;
-    }
-
-    .nav-links a:hover::after {
-      transform: scaleX(1);
-    }
-
-    .nav-cta {
-      margin-left: auto;
-      padding: 7px 16px;
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(216, 166, 180, 0.9);
-      background: radial-gradient(circle at top left, #ffffff 0, #e9c4cf 30%, #f8e3e8 85%);
-      color: #4b1f2b;
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      box-shadow: var(--shadow-soft);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      cursor: pointer;
-      transition: transform var(--transition), box-shadow var(--transition),
-        filter var(--transition);
-      white-space: nowrap;
-    }
-
-    .nav-cta span {
-      font-size: 10px;
-      opacity: 0.8;
-    }
-
-    .nav-cta:hover {
-      transform: translateY(-1px) scale(1.01);
-      filter: brightness(1.03);
-      box-shadow: 0 18px 45px rgba(148, 163, 184, 0.45);
-    }
-
-    .nav-toggle {
-      display: none;
-      border: 1px solid rgba(209, 213, 219, 0.9);
-      border-radius: 999px;
-      padding: 6px 10px;
-      font-size: 13px;
-      background: rgba(255, 255, 255, 0.95);
-      color: var(--muted);
-      cursor: pointer;
-    }
-
-    /* HERO */
-
-    .hero {
-      padding: 48px 20px 64px;
-      position: relative;
-      overflow: hidden;
-      background: radial-gradient(
-        circle at top center,
-        #fff8f4 0%,
-        #f5f2ec 55%,
-        #efe8e0 100%
-      );
-    }
-
-    .hero-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
-      gap: 40px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 4px 10px 4px 4px;
-      border-radius: var(--radius-pill);
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      margin-bottom: 16px;
-    }
-
-    .eyebrow-pill {
-      padding: 2px 10px;
-      border-radius: 999px;
-      background: radial-gradient(circle at top left, #ffffff 0, #e9c4cf 30%, #fdf7f4 80%);
-      color: #4b1f2b;
-      font-weight: 600;
-    }
-
-    .hero-title {
-  font-family: "Great Vibes", cursive;
-  font-size: clamp(48px, 6vw, 64px);
-  letter-spacing: 0.03em;
-  text-transform: none;
-  line-height: 1.1;
-  margin-bottom: 12px;
-  color: #000000;          /* samma färg för allt */
-  font-weight: 400;        /* lite tunnare */
-}
-
-.hero-title span {
-  display: block;
-  font-family: "Great Vibes", cursive; /* samma stil som namnen */
-  font-size: 0.65em;
-  letter-spacing: 0.12em;
-  text-transform: none;
-  color: #000000;          /* samma färg */
-  margin-bottom: 6px;
-}
-
-
-    .hero-subtitle {
-      font-size: 15px;
-      color: var(--muted);
-      max-width: 480px;
-      margin-bottom: 22px;
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 18px;
-      margin-bottom: 26px;
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .hero-meta-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 10px;
-      border-radius: var(--radius-pill);
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid var(--border);
-    }
-
-    .hero-meta-label {
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      font-size: 11px;
-      color: #9ca3af;
-    }
-
-    .hero-meta-value {
-      font-weight: 500;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .btn-primary,
-    .btn-ghost {
-      padding: 11px 18px;
-      border-radius: var(--radius-pill);
-      font-size: 13px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      border: 1px solid transparent;
-      transition: background var(--transition), transform var(--transition),
-        box-shadow var(--transition), border-color var(--transition),
-        color var(--transition);
-    }
-
-    .btn-primary {
-      background: radial-gradient(circle at top left, #ffffff 0, #e9c4cf 30%, #f8e3e8 85%);
-      color: #4b1f2b;
-      font-weight: 600;
-      box-shadow: var(--shadow-soft);
-      border-color: rgba(216, 166, 180, 0.9);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px) scale(1.01);
-      box-shadow: 0 24px 60px rgba(148, 163, 184, 0.5);
-      filter: brightness(1.05);
-    }
-
-    .btn-ghost {
-      background: rgba(255, 255, 255, 0.9);
-      border-color: var(--border);
-      color: var(--muted);
-    }
-
-    .btn-ghost:hover {
-      background: #ffffff;
-      color: var(--text);
-      transform: translateY(-1px);
-    }
-
-    .btn-primary svg,
-    .btn-ghost svg {
-      width: 14px;
-      height: 14px;
-    }
-
-    /* HERO SIDE CARD */
-
-    .hero-card {
-      border-radius: 26px;
-      padding: 20px 20px 22px;
-      background: linear-gradient(145deg, #ffffff, #f9f3f1);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow-soft);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-card-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-tagline {
-      font-size: 12px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-
-    .hero-date {
-      font-family: "Playfair Display", serif;
-      font-size: 22px;
-      margin-bottom: 12px;
-    }
-
-    .hero-location {
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 18px;
-    }
-
-    .hero-countdown {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-
-    .countdown-item {
-      padding: 8px 6px;
-      border-radius: 14px;
-      background: #fdfbf7;
-      border: 1px solid var(--border);
-      text-align: center;
-    }
-
-    .countdown-number {
-      font-size: 18px;
-      font-weight: 600;
-    }
-
-    .countdown-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #9ca3af;
-    }
-
-    .hero-note {
-      font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
-
-    .hero-chip-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      font-size: 11px;
-    }
-
-    .hero-chip {
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: #fdfbf7;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .hero-card-shine {
-      position: absolute;
-      inset: -40%;
-      background: radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.7) 0, transparent 60%);
-      opacity: 0.7;
-      pointer-events: none;
-    }
-
-    /* SECTIONS */
-
-    main {
-      padding: 10px 20px 60px;
-    }
-
-    .section {
-      max-width: var(--max-width);
-      margin: 0 auto 40px;
-      padding: 24px 20px 26px;
-      border-radius: var(--radius-lg);
-      background: var(--bg-soft);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 14px;
-      margin-bottom: 16px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 10px;
-    }
-
-    .section-title {
-      font-family: "Playfair Display", serif;
-      font-size: 18px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-    }
-
-    .section-kicker {
-      font-size: 12px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-    }
-
-    .section-body {
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    /* SCHEDULE */
-
-    .timeline {
-      display: grid;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 90px minmax(0, 1fr);
-      gap: 12px;
-      align-items: start;
-      padding: 10px 12px;
-      border-radius: 14px;
-      background: #ffffff;
-      border: 1px solid var(--border);
-    }
-
-    .timeline-time {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: #9ca3af;
-      margin-top: 4px;
-    }
-
-    .timeline-main {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .timeline-title {
-      font-size: 14px;
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .timeline-sub {
-      font-size: 13px;
-    }
-
-    /* VENUES */
-
-    .venue-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 10px;
-    }
-
-    .venue-card {
-      padding: 12px 12px 13px;
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      background: #ffffff;
-    }
-
-    .venue-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #9ca3af;
-      margin-bottom: 4px;
-    }
-
-    .venue-name {
-      font-size: 15px;
-      color: var(--text);
-      font-weight: 500;
-      margin-bottom: 4px;
-    }
-
-    .venue-address {
-      font-size: 13px;
-      margin-bottom: 8px;
-    }
-
-    .venue-meta {
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-
-    .venue-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 4px;
-    }
-
-    .chip-link {
-      font-size: 11px;
-      padding: 5px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: #ffffff;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      cursor: pointer;
-      transition: background var(--transition), transform var(--transition),
-        border-color var(--transition), color var(--transition);
-    }
-
-    .chip-link:hover {
-      background: #fdfbf7;
-      border-color: rgba(216, 166, 180, 0.9);
-      color: var(--text);
-      transform: translateY(-1px);
-    }
-
-    /* MENU */
-
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-      margin-top: 10px;
-    }
-
-    .menu-card {
-      padding: 14px 14px 15px;
-      border-radius: 18px;
-      background: #ffffff;
-      border: 1px solid var(--border);
-      box-shadow: 0 10px 30px rgba(148, 163, 184, 0.15);
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .menu-course {
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #9ca3af;
-    }
-
-    .menu-title {
-      font-size: 16px;
-      font-family: "Playfair Display", serif;
-      color: var(--text);
-    }
-
-    .menu-items {
-      list-style: none;
-      margin-top: 6px;
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .menu-items li::before {
-      content: "• ";
-      color: #d8a6b4;
-    }
-
-    .menu-note {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 8px;
-    }
-
-    /* DRESS CODE */
-
-    .dress-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr);
-      gap: 16px;
-      margin-top: 10px;
-    }
-
-    .dress-main {
-      padding: 12px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      background: #ffffff;
-    }
-
-    .dress-pill {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      padding: 4px 9px;
-      border-radius: 999px;
-      background: #fdfbf7;
-      border: 1px solid var(--border);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 8px;
-    }
-
-    .dress-main h3 {
-      font-size: 14px;
-      margin-bottom: 4px;
-      color: var(--text);
-    }
-
-    .dress-main p {
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .dress-list {
-      margin-top: 8px;
-      font-size: 13px;
-    }
-
-    .dress-list li {
-      margin-left: 18px;
-      margin-bottom: 4px;
-    }
-
-    .dress-note {
-      font-size: 12px;
-      margin-top: 6px;
-    }
-
-    .dress-side {
-      padding: 12px;
-      border-radius: 14px;
-      border: 1px dashed rgba(209, 213, 219, 0.9);
-      background: #ffffff;
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .dress-side h4 {
-      font-size: 13px;
-      color: var(--text);
-      margin-bottom: 4px;
-    }
-
-    /* TRADITIONS */
-
-    .traditions-highlight {
-      margin-top: 10px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      background: #ffffff;
-      border: 1px dashed rgba(216, 166, 180, 0.7);
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .traditions-highlight strong {
-      color: #b65f7c;
-    }
-
-    /* GIFTS */
-
-    .section#gifts p + p {
-      margin-top: 6px;
-    }
-
-    /* EXPLORE GOTHENBURG */
-
-    .explore-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
-      margin-top: 10px;
-    }
-
-    .explore-card {
-      padding: 12px 12px 13px;
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      background: #ffffff;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .explore-name {
-      font-size: 15px;
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .explore-tag {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #9ca3af;
-    }
-
-    .explore-desc {
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    /* TOASTMASTERS */
-
-    .toastmasters-list {
-      list-style: none;
-      margin-top: 10px;
-      font-size: 14px;
-    }
-
-    .toastmasters-list li {
-      margin-bottom: 8px;
-    }
-
-    .toastmasters-role {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #9ca3af;
-    }
-
-    .toastmasters-name {
-      font-weight: 500;
-      color: var(--text);
-    }
-
-    .toastmasters-phone a {
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      text-decoration-style: dotted;
-      color: var(--muted);
-    }
-
-    /* RSVP */
-
-    .rsvp-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr);
-      gap: 14px;
-      margin-top: 10px;
-    }
-
-    .rsvp-main p {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-
-    .rsvp-date {
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #b65f7c;
-      margin-bottom: 8px;
-    }
-
-    .rsvp-highlight {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(216, 166, 180, 0.9);
-      background: #fff7fa;
-      font-size: 12px;
-      margin-bottom: 8px;
-    }
-
-    .rsvp-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 6px;
-    }
-
-    .rsvp-side {
-      padding: 12px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      background: #ffffff;
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    .rsvp-side h4 {
-      font-size: 13px;
-      color: var(--text);
-      margin-bottom: 4px;
-    }
-
-    /* --- FADE IN FOR SPOTIFY SECTION --- */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(12px);
-      animation: fadeInSmooth 1.2s ease forwards;
-    }
-
-    @keyframes fadeInSmooth {
-      0% { opacity: 0; transform: translateY(14px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    /* --- SPOTIFY BUTTON --- */
-    .spotify-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 22px;
-      font-size: 14px;
-      font-weight: 600;
-      border-radius: 30px;
-      background: linear-gradient(135deg, #ffffff, #f4efe9);
-      color: #7a6259;
-      border: 1px solid #e8e1d9;
-      box-shadow: 0 4px 12px rgba(180, 160, 140, 0.25);
-      transition: all 0.25s ease;
-      text-decoration: none;
-    }
-
-    .spotify-btn:hover {
-      transform: translateY(-3px) scale(1.04);
-      box-shadow: 0 10px 20px rgba(180, 160, 140, 0.38);
-      background: linear-gradient(135deg, #fefcfa, #f1e9e1);
-    }
-
-    .spotify-icon {
-      width: 18px;
-      height: 18px;
-      display: block;
-      filter: brightness(0.5);
-      transition: filter 0.2s ease;
-    }
-
-    .spotify-btn:hover .spotify-icon {
-      filter: brightness(0.3);
-    }
-
-    /* FOOTER */
-
-    footer {
-      max-width: var(--max-width);
-      margin: 0 auto 36px;
-      padding: 0 20px;
-      font-size: 12px;
-      color: var(--muted);
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      border-top: 1px solid var(--border);
-      padding-top: 12px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .footer-links a {
-      padding: 4px 9px;
-      border-radius: 999px;
-      background: #ffffff;
-      border: 1px solid var(--border);
-    }
-
-    .footer-links a:hover {
-      border-color: rgba(216, 166, 180, 0.9);
-    }
-
-    /* RESPONSIVE */
-
-    @media (max-width: 900px) {
-      .hero-inner {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .hero-card {
-        order: -1;
-      }
-
-      .venue-grid,
-      .dress-grid,
-      .rsvp-grid,
-      .explore-grid,
-      .menu-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    @media (max-width: 720px) {
-      .nav-inner {
-        padding-inline: 16px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .nav-toggle {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-      }
-
-      .nav-links.open {
-        position: absolute;
-        inset: 54px 12px auto;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-        padding: 10px 10px 8px;
-        border-radius: 18px;
-        background: #ffffff;
-        border: 1px solid var(--border);
-      }
-
-      .hero {
-        padding-top: 32px;
-      }
-
-      .hero-title {
-        font-size: 40px;
-      }
-
-      .section {
-        padding-inline: 16px;
-      }
-
-      footer {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bozhidar & Melissa – Wedding</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&family=Great+Vibes&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #f5f2ec;
+      --bg-soft: #fdfbf7; /* Ljusare bakgrund för kort */
+      --card: #ffffff;
+      --accent: #d8a6b4;
+      --text: #1f2933;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.04);
+      --radius-lg: 16px;
+      --max-width: 1120px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* --- NAVIGERING (Från bilden) --- */
+    .nav {
+      padding: 20px 0;
+      text-align: center;
+      background: rgba(253, 252, 249, 0.95);
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex; flex-direction: column; align-items: center; gap: 15px;
+      padding: 0 20px;
+    }
+
+    .brand {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
+    }
+    .brand-mark {
+      width: 40px; height: 40px; border-radius: 50%; background: #fff;
+      display: grid; place-items: center; font-family: "Playfair Display", serif;
+      border: 1px solid #e8e1d9; font-weight: 600; color: #7a6259; font-size: 14px;
+    }
+
+    .nav-links { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+    .nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: #e9c4cf; background: radial-gradient(circle at top left, #fff0f3 0, #e9c4cf 100%);
+      padding: 8px 20px; border-radius: 99px; border: 1px solid #d8a6b4;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      cursor: pointer; transition: transform 0.2s; color: #4b1f2b;
+    }
+    .nav-cta:hover { transform: translateY(-1px); }
+
+    @media (min-width: 900px) {
+        .nav-inner { flex-direction: row; justify-content: space-between; }
+        .nav-links { gap: 30px; }
+    }
+
+    /* --- SEKTIONER --- */
+    main { padding: 40px 20px 80px; }
+
+    .section {
+      max-width: var(--max-width);
+      margin: 0 auto 60px;
+      background: var(--bg-soft);
+      border-radius: 20px;
+      padding: 40px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section-header {
+      display: flex; justify-content: space-between; align-items: baseline;
+      margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 15px;
+    }
+
+    .section-title {
+      font-family: "Playfair Display", serif; font-size: 24px;
+      text-transform: uppercase; letter-spacing: 0.1em; color: var(--text);
+    }
+
+    .section-label {
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--muted);
+    }
+
+    .section-desc { font-size: 14px; color: var(--muted); margin-bottom: 30px; max-width: 800px; }
+
+    /* --- KORT-DESIGN (Venues & Menu) --- */
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex; flex-direction: column;
+      transition: transform 0.2s ease, border-color 0.2s;
+    }
+    .card:hover { transform: translateY(-2px); border-color: var(--accent); }
+
+    .card-tag {
+      font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: #9ca3af;
+      margin-bottom: 8px;
+    }
+
+    .card-title {
+      font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 4px;
+    }
+
+    .card-text { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 15px; flex-grow: 1; }
+    
+    .card-meta { font-size: 13px; color: var(--text); margin-bottom: 15px; }
+
+    /* KNAPP: Open in Google Maps */
+    .btn-maps {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 14px; border-radius: 99px;
+      border: 1px solid var(--border); background: #fff;
+      font-size: 11px; color: var(--muted); text-decoration: none;
+      transition: all 0.2s; align-self: flex-start;
+    }
+    .btn-maps:hover { background: #f9fafb; color: var(--text); border-color: #d1d5db; }
+    .pin-icon { color: #d8a6b4; font-size: 14px; }
+
+    /* LISTA FÖR MENY */
+    .menu-list { list-style: none; font-size: 13px; color: var(--muted); margin-top: 10px; }
+    .menu-list li { margin-bottom: 4px; }
+    .menu-list li::before { content: "• "; color: #d8a6b4; }
+
+    /* RESPONSIVITET */
+    @media (max-width: 600px) {
+      .grid-2, .grid-4 { grid-template-columns: 1fr; }
+      .section { padding: 20px; }
+      .nav-links { display: none; } /* Dölj länkar på mycket små skärmar */
+      .section-header { flex-direction: column; gap: 5px; }
+    }
+  </style>
 </head>
 <body>
-  <div class="page" id="top">
-    <!-- NAVIGATION -->
-    <header class="nav">
-      <div class="nav-inner">
-        <div class="brand">
-          <div class="brand-mark"></div>
-          <div>Wedding • 04.07.2026</div>
-        </div>
-        <nav class="nav-links" id="navLinks">
-          <a href="#details">Details</a>
-          <a href="#venues">Ceremony</a>
-          <a href="#menu">Menu</a>
-          <a href="#dresscode">Dress code</a>
-          <a href="#traditions">Celebration</a>
-          <a href="#mood">Playlist</a>
-          <a href="#explore">Explore</a>
-          <a href="#toastmasters">Toastmasters</a>
-          <a href="#rsvp">RSVP</a>
-        </nav>
-        <button class="nav-toggle" id="navToggle">
-          Menu
-        </button>
-        <button class="nav-cta" onclick="document.getElementById('rsvp').scrollIntoView({behavior:'smooth'})">
-          RSVP
-          <span>Kindly respond</span>
-        </button>
-      </div>
-    </header>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-inner">
-        <div>
-          <div class="eyebrow">
-            <div class="eyebrow-pill">We are getting married</div>
-            <span>Gothenburg, Sweden</span>
-          </div>
-          <h1 class="hero-title">
-            <span>The wedding of</span>
-            Bozhidar &amp; Melissa
-          </h1>
-          <p class="hero-subtitle">
-            With great joy, we invite you to celebrate our wedding day in Gothenburg.
-            We are so excited to share this special moment with our dearest family and friends.
-          </p>
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-mark">B♥M</div>
+        WEDDING • 04.07.2026
+      </div>
+      <nav class="nav-links">
+        <a href="#">Details</a>
+        <a href="#venues">Ceremony</a>
+        <a href="#menu">Menu</a>
+        <a href="#">Dress code</a>
+        <a href="#">Celebration</a>
+        <a href="#">Playlist</a>
+        <a href="#">Explore</a>
+        <a href="#">Toastmasters</a>
+        <a href="#">RSVP</a>
+      </nav>
+      <button class="nav-cta">RSVP KINDLY RESPOND</button>
+    </div>
+  </header>
 
-          <div class="hero-meta">
-            <div class="hero-meta-item">
-              <div>
-                <div class="hero-meta-label">Date</div>
-                <div class="hero-meta-value">Saturday, 4 July 2026</div>
-              </div>
-            </div>
-            <div class="hero-meta-item">
-              <div>
-                <div class="hero-meta-label">Ceremony</div>
-                <div class="hero-meta-value">
-                  16:00 – Annedalskyrkan, Albin Holms Backe 10
-                </div>
-              </div>
-            </div>
-            <div class="hero-meta-item">
-              <div>
-                <div class="hero-meta-label">Reception</div>
-                <div class="hero-meta-value">
-                  Venue Wedding, Angeredsvinkeln 5
-                </div>
-              </div>
-            </div>
-          </div>
+  <main>
+    
+    <section class="section" id="venues">
+      <div class="section-header">
+        <h2 class="section-title">Ceremony & Reception</h2>
+        <span class="section-label">Locations</span>
+      </div>
+      <p class="section-desc">
+        Our wedding day will take place at two locations in and around Gothenburg: The Church for our ceremony, and our reception Venue where we will celebrate together.
+      </p>
 
-          <div class="hero-actions">
-            <button class="btn-primary" onclick="document.getElementById('rsvp').scrollIntoView({behavior:'smooth'})">
-              RSVP to our day
-              <svg viewBox="0 0 20 20" aria-hidden="true">
-                <path fill="currentColor"
-                      d="M4 10.5h8.793l-3.647 3.646a.5.5 0 1 0 .708.708l4.5-4.5a.498.498 0 0 0 0-.708l-4.5-4.5a.5.5 0 1 0-.708.708L12.793 9.5H4a.5.5 0 0 0 0 1Z" />
-              </svg>
-            </button>
-            <button class="btn-ghost" onclick="document.getElementById('venues').scrollIntoView({behavior:'smooth'})">
-              View ceremony &amp; reception
-            </button>
-          </div>
-        </div>
+      <div class="grid-2">
+        <div class="card">
+          <span class="card-tag">CEREMONY</span>
+          <h3 class="card-title">Annedalskyrkan</h3>
+          <div class="card-text">
+            Albin Holms Backe 10<br>Gothenburg, Sweden
+            <br><br>
+            The ceremony will start at 16:00. Please be seated a few minutes in advance.
+          </div>
+          <a href="https://goo.gl/maps/xExample" target="_blank" class="btn-maps">
+            <span class="pin-icon">📍</span> Open in Google Maps
+          </a>
+        </div>
 
-        <aside class="hero-card">
-          <div class="hero-card-shine"></div>
-          <div class="hero-card-inner">
-            <div class="hero-tagline">Countdown to our "I do"</div>
-            <div class="hero-date">4 July 2026 • 16:00</div>
-            <div class="hero-location">
-              Annedalskyrkan, Albin Holms Backe 10 • Venue Wedding, Angeredsvinkeln 5
-            </div>
+        <div class="card">
+          <span class="card-tag">RECEPTION & PARTY</span>
+          <h3 class="card-title">Venue Wedding</h3>
+          <div class="card-text">
+            Angeredsvinkeln 5<br>424 65 Angered, Sweden
+            <br><br>
+            After the ceremony, we continue the celebration with dinner, speeches and dancing.
+          </div>
+          <a href="https://goo.gl/maps/yExample" target="_blank" class="btn-maps">
+            <span class="pin-icon">📍</span> Open in Google Maps
+          </a>
+        </div>
+      </div>
+    </section>
 
-            <div class="hero-countdown" id="countdown">
-              <div class="countdown-item">
-                <div class="countdown-number" id="days">–</div>
-                <div class="countdown-label">Days</div>
-              </div>
-              <div class="countdown-item">
-                <div class="countdown-number" id="hours">–</div>
-                <div class="countdown-label">Hours</div>
-              </div>
-              <div class="countdown-item">
-                <div class="countdown-number" id="minutes">–</div>
-                <div class="countdown-label">Minutes</div>
-              </div>
-              <div class="countdown-item">
-                <div class="countdown-number" id="seconds">–</div>
-                <div class="countdown-label">Seconds</div>
-              </div>
-            </div>
+    <section class="section" id="menu">
+      <div class="section-header">
+        <h2 class="section-title">Menu</h2>
+        <span class="section-label">Food & Drinks</span>
+      </div>
+      <p class="section-desc">
+        We are so happy to share a menu inspired by Middle Eastern flavours, served as a festive dinner with meze, main course and dessert. There will also be both non-alcoholic and alcoholic drinks on the tables.
+      </p>
 
-            <p class="hero-note">
-              We kindly request adults-only celebration for the reception,
-              so everyone can fully relax and enjoy the evening with us.
-            </p>
+      <div class="grid-4">
+        <div class="card">
+          <span class="card-tag">COLD MEZE</span>
+          <h3 class="card-title" style="font-size: 16px;">To start the evening</h3>
+          <ul class="menu-list">
+            <li>Muhammara</li>
+            <li>Tzatziki</li>
+            <li>Hummus</li>
+            <li>Fattoush</li>
+          </ul>
+        </div>
 
-            <div class="hero-chip-row">
-              <div class="hero-chip">
-                ✨ <span>Dress code: Classy &amp; Elegant</span>
-              </div>
-              <div class="hero-chip">
-                💌 <span>You’ll find all the details you need further down on this page.</span>
-              </div>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
+        <div class="card">
+          <span class="card-tag">WARM MEZE</span>
+          <h3 class="card-title" style="font-size: 16px;">From the kitchen</h3>
+          <ul class="menu-list">
+            <li>Kibbeh</li>
+            <li>Cheese rolls</li>
+            <li>Dolma</li>
+          </ul>
+        </div>
 
-    <!-- DETAILS -->
-    <main>
-      <section class="section" id="details">
-        <div class="section-header">
-          <div class="section-title">The Day</div>
-          <div class="section-kicker">Schedule</div>
-        </div>
-        <div class="section-body">
-          <p>
-            Here is a short overview of how our wedding day will unfold. Exact timing may
-            change slightly, but this is the plan for now.
-          </p>
+        <div class="card">
+          <span class="card-tag">MAIN COURSE</span>
+          <h3 class="card-title" style="font-size: 16px;">Chicken & vegetarian</h3>
+          <div class="card-text" style="margin-top:10px;">
+            Grilled chicken fillet with potatoes, tomato, asparagus and sauce.
+          </div>
+        </div>
 
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-time">15:30</div>
-              <div class="timeline-main">
-                <div class="timeline-title">Guests arrive at Annedalskyrkan</div>
-                <div class="timeline-sub">
-                  Address: Albin Holms Backe 10, Gothenburg.
-                  Please arrive a little early to find your seat and get settled before the ceremony begins.
-                </div>
-              </div>
-            </div>
+        <div class="card">
+          <span class="card-tag">DESSERT</span>
+          <h3 class="card-title" style="font-size: 16px;">Sweet finish</h3>
+          <div class="card-text" style="margin-top:10px;">
+            We will end the dinner with a dessert to share together, and of course something sweet to celebrate.
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <div class="timeline-item">
-              <div class="timeline-time">16:00</div>
-              <div class="timeline-main">
-                <div class="timeline-title">Wedding ceremony</div>
-                <div class="timeline-sub">
-                  The moment we say "yes" to each other, surrounded by our closest family and friends.
-                </div>
-              </div>
-            </div>
+  </main>
 
-            <div class="timeline-item">
-              <div class="timeline-time">After ceremony</div>
-              <div class="timeline-main">
-                <div class="timeline-title">Transport &amp; arrival at Venue Wedding</div>
-                <div class="timeline-sub">
-               After the ceremony, we kindly ask guests to make their own way to Venue Wedding (Angeredsvinkeln 5), where an evening of celebration awaits. 
-                  Complimentary parking is available at the venue.
-                </div>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-time">Evening</div>
-              <div class="timeline-main">
-                <div class="timeline-title">Dinner, speeches &amp; party</div>
-                <div class="timeline-sub">
-                  Dinner, speeches, dancing and celebrations late into the night. Bring your best energy and smiles!
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- VENUES -->
-      <section class="section" id="venues">
-        <div class="section-header">
-          <div class="section-title">Ceremony &amp; Reception</div>
-          <div class="section-kicker">Locations</div>
-        </div>
-        <div class="section-body">
-          <p>
-            Our wedding day will take place at two locations in and around Gothenburg:
-            The Church for our ceremony, and our reception Venue where we will celebrate together.
-          </p>
-
-          <div class="venue-grid">
-            <div class="venue-card">
-              <div class="venue-label">Ceremony</div>
-              <div class="venue-name">Annedalskyrkan</div>
-              <div class="venue-address">
-                Albin Holms Backe 10<br />
-                Gothenburg, Sweden
-              </div>
-              <div class="venue-meta">
-                The ceremony will start at 16:00. Please be seated a few minutes in advance.
-              </div>
-              <div class="venue-links">
-                <a class="chip-link" href="https://www.google.com/maps/search/?api=1&query=Annedalskyrkan+Albin+Holms+Backe+10" target="_blank" rel="noreferrer">
-                  📍 Open in Google Maps
-                </a>
-              </div>
-            </div>
-
-            <div class="venue-card">
-              <div class="venue-label">Reception &amp; Party</div>
-              <div class="venue-name">Venue Wedding</div>
-              <div class="venue-address">
-                Angeredsvinkeln 5<br />
-                424 65 Angered, Sweden
-              </div>
-              <div class="venue-meta">
-                After the ceremony, we continue the celebration with dinner, speeches and dancing.
-              </div>
-              <div class="venue-links">
-                <a class="chip-link" href="https://www.google.com/maps/search/?api=1&query=Venue+Wedding+Angeredsvinkeln+5" target="_blank" rel="noreferrer">
-                  📍 Open in Google Maps
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- MENU -->
-      <section class="section" id="menu">
-        <div class="section-header">
-          <div class="section-title">Menu</div>
-          <div class="section-kicker">Food &amp; Drinks</div>
-        </div>
-        <div class="section-body">
-          <p>
-            We are so happy to share a menu inspired by Middle Eastern flavours, served as a festive dinner with meze,
-            main course and dessert. There will also be both non-alcoholic and alcoholic drinks on the tables.
-          </p>
-
-          <div class="menu-grid">
-            <div class="menu-card">
-              <div class="menu-course">Cold meze</div>
-              <div class="menu-title">To start the evening</div>
-              <ul class="menu-items">
-                <li>Muhammara</li>
-                <li>Tzatziki</li>
-                <li>Hummus</li>
-                <li>Fattoush</li>
-                <li>Tabbouleh</li>
-              </ul>
-              <p class="menu-note">
-                Served to share at the table.
-              </p>
-            </div>
-
-            <div class="menu-card">
-              <div class="menu-course">Warm meze</div>
-              <div class="menu-title">From the kitchen</div>
-              <ul class="menu-items">
-                <li>Kibbeh</li>
-                <li>Cheese rolls</li>
-                <li>Dolma</li>
-              </ul>
-              <p class="menu-note">
-                A warm selection to enjoy together before the main course.
-              </p>
-            </div>
-
-            <div class="menu-card">
-              <div class="menu-course">Main course</div>
-              <div class="menu-title">Chicken &amp; vegetarian option</div>
-              <ul class="menu-items">
-                <li>Grilled chicken fillet with potatoes, tomato, asparagus and sauce</li>
-                <li>Vegetarian alternative available</li>
-              </ul>
-              <p class="menu-note">
-                Please let us know in your RSVP if you prefer the vegetarian option or have any dietary requirements.
-              </p>
-            </div>
-
-            <div class="menu-card">
-              <div class="menu-course">Dessert</div>
-              <div class="menu-title">Sweet finish</div>
-              <p class="menu-note">
-                We will end the dinner with a dessert to share together, and of course something sweet to celebrate the evening.
-              </p>
-            </div>
-
-            <div class="menu-card">
-              <div class="menu-course">Drinks</div>
-              <div class="menu-title">On the tables</div>
-              <p class="menu-note">
-                There will be a mix of soft drinks and alcoholic beverages on the tables during the dinner.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- DRESS CODE -->
-      <section class="section" id="dresscode">
-        <div class="section-header">
-          <div class="section-title">Dress Code</div>
-          <div class="section-kicker">Classy &amp; Elegant</div>
-        </div>
-        <div class="section-body">
-          <p>
-            We would love for the day to feel a little extra special. The dress code is
-            <strong>Classy &amp; Elegant</strong> – think modern, polished and festive.
-          </p>
-
-          <div class="dress-grid">
-            <div class="dress-main">
-              <div class="dress-pill">
-                ✨ Dress code
-                <span>Classy &amp; Elegant</span>
-              </div>
-              <h3>What to wear</h3>
-              <p>
-                A good guideline is cocktail / semi-formal:
-              </p>
-              <ul class="dress-list">
-                <li>
-                  For Women: Dresses or elegant jumpsuits, dressy two-piece outfits, heels or nice flats.
-                </li>
-                <li>
-                  For Men: Suit or dress pants with blazer, shirt, and dress shoes. Tie is welcome but not required.
-                </li>
-              </ul>
-              <p class="dress-note">
-                Feel free to choose colors you love. Soft, timeless tones and classic styles
-                will fit nicely with the evening.
-              </p>
-            </div>
-
-            <div class="dress-side">
-              <h4>What to avoid</h4>
-              <p>
-                To help the bride stand out, we kindly ask that you avoid wearing pure white or
-                very bridal ivory. Very casual clothing (hoodies, sneakers, shorts, etc.)
-                is also best kept at home.
-              </p>
-              <p style="margin-top:6px;">
-                If you are unsure about your outfit, don’t worry – your presence is what matters most.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CELEBRATION & TRADITIONS -->
-      <section class="section" id="traditions">
-        <div class="section-header">
-          <div class="section-title">Celebration &amp; Traditions</div>
-          <div class="section-kicker">Bulgarian &amp; Lebanese vibes</div>
-        </div>
-        <div class="section-body">
-          <p>
-            Our wedding will be a mix of Bulgarian and Lebanese traditions – a celebration full of music,
-            rhythm and a lot of dancing. You can expect both classic party hits and songs that are close to our hearts.
-          </p>
-          <p>
-            During the evening there will be a traditional Lebanese zaffe entrance, energetic dabke,
-            lots of Bulgarian horo and more surprises along the way.
-            You absolutely don’t need to know the steps – just join in, follow the crowd and enjoy the moment.
-          </p>
-
-          <div class="traditions-highlight">
-            <strong>Most important of all:</strong> More than anything, we want to share the dance floor with you.
-Let’s laugh, dance, and celebrate together — this night holds a very special place in our hearts.
-          </div>
-        </div>
-      </section>
-
-      <!-- GET IN THE MOOD -->
-      <section class="section fade-in" id="mood">
-        <div class="section-header">
-          <div class="section-title">Get in the Mood</div>
-          <div class="section-kicker">Wedding vibes</div>
-        </div>
-
-        <div class="section-body">
-          <p>
-            Warm up for the big day with our wedding playlist – a mix of songs we love,
-            dance-floor classics, and music that brings together Lebanese, Bulgarian
-            and international vibes.
-          </p>
-
-          <a class="spotify-btn"
-             href="https://open.spotify.com/playlist/6vlW4I5jbTenW7kZI7i7fX?si=dP54Hph5SDenyJWc3N7Mcg"
-             target="_blank" rel="noreferrer">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg"
-              alt="Spotify"
-              class="spotify-icon"
-            />
-            Listen on Spotify
-          </a>
-        </div>
-      </section>
-
-      <!-- GIFTS -->
-      <section class="section" id="gifts">
-        <div class="section-header">
-          <div class="section-title">Gifts</div>
-          <div class="section-kicker">Presents</div>
-        </div>
-        <div class="section-body">
-          <p>
-            Your presence on our wedding day is the greatest gift we could ask for.
-            We truly don’t expect anything more.
-          </p>
-          <p>
-            However, if you would like to honour us with a present, we would be deeply grateful
-            for a contribution to our honeymoon and future dreams together.
-          </p>
-          <p>
-            Practical details about how to give will be shared closer to the wedding date.
-          </p>
-        </div>
-      </section>
-
-      <!-- EXPLORE GOTHENBURG -->
-      <section class="section" id="explore">
-        <div class="section-header">
-          <div class="section-title">Explore Gothenburg</div>
-          <div class="section-kicker">Top 5 things to do</div>
-        </div>
-        <div class="section-body">
-          <p>
-            If you are spending a bit more time around our wedding, here are a few of our favourite
-            places and classic Gothenburg experiences. Perfect for a relaxed weekend before or after the big day.
-          </p>
-
-          <div class="explore-grid">
-            <div class="explore-card">
-              <div class="explore-tag">Amusement park</div>
-              <div class="explore-name">Liseberg</div>
-              <p class="explore-desc">
-                A classic Gothenburg landmark with rides, games, gardens and cosy spots to eat.
-                Great both day and night in the summer.
-              </p>
-              <a class="chip-link"
-                 href="https://www.google.com/maps/search/?api=1&query=Liseberg+Gothenburg"
-                 target="_blank" rel="noreferrer">
-                📍 Open in Google Maps
-              </a>
-            </div>
-
-            <div class="explore-card">
-              <div class="explore-tag">Old town</div>
-              <div class="explore-name">Haga</div>
-              <p class="explore-desc">
-                Cobblestone streets, wooden houses, cafés and shops. Perfect for a fika and a slow walk.
-              </p>
-              <a class="chip-link"
-                 href="https://www.google.com/maps/search/?api=1&query=Haga+Gothenburg"
-                 target="_blank" rel="noreferrer">
-                📍 Open in Google Maps
-              </a>
-            </div>
-
-            <div class="explore-card">
-              <div class="explore-tag">Park & nature</div>
-              <div class="explore-name">Slottsskogen</div>
-              <p class="explore-desc">
-                A large city park with walking paths, viewpoints and green areas. Nice for a picnic or a quiet stroll.
-              </p>
-              <a class="chip-link"
-                 href="https://www.google.com/maps/search/?api=1&query=Slottsskogen+Gothenburg"
-                 target="_blank" rel="noreferrer">
-                📍 Open in Google Maps
-              </a>
-            </div>
-
-            <div class="explore-card">
-              <div class="explore-tag">Sea & islands</div>
-              <div class="explore-name">Gothenburg Archipelago</div>
-              <p class="explore-desc">
-                Take a tram to Saltholmen and jump on a ferry out to the islands. Beautiful views and true west coast feeling.
-              </p>
-              <a class="chip-link"
-                 href="https://www.google.com/maps/search/?api=1&query=Saltholmen+terminal+Gothenburg"
-                 target="_blank" rel="noreferrer">
-                📍 Open in Google Maps
-              </a>
-            </div>
-
-            <div class="explore-card">
-              <div class="explore-tag">Science & fun</div>
-              <div class="explore-name">Universeum</div>
-              <p class="explore-desc">
-                An indoor universe with rainforests, aquariums and science experiments – fun for both adults and kids.
-              </p>
-              <a class="chip-link"
-                 href="https://www.google.com/maps/search/?api=1&query=Universeum+Gothenburg"
-                 target="_blank" rel="noreferrer">
-                📍 Open in Google Maps
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- TOASTMASTERS & CONTACT -->
-      <section class="section" id="toastmasters">
-        <div class="section-header">
-          <div class="section-title">Toastmasters &amp; Contact</div>
-          <div class="section-kicker">For speeches &amp; surprises</div>
-        </div>
-        <div class="section-body">
-          <p>
-            If you would like to hold a speech, plan a surprise, a game or anything else during the evening,
-            we kindly ask you to contact our toastmasters instead of contacting us directly.
-          </p>
-          <p>
-            They will help coordinate the flow of the evening so everything feels smooth and joyful.
-          </p>
-
-          <ul class="toastmasters-list">
-            <li>
-              <div class="toastmasters-role">Toastmaster</div>
-              <div class="toastmasters-name">Rajan Mahdavi</div>
-              <div class="toastmasters-phone">
-                Phone: <a href="tel:+46721802607">+46 72 180 26 07</a>
-              </div>
-            </li>
-            <li>
-              <div class="toastmasters-role">Toastmaster</div>
-              <div class="toastmasters-name">Marianne Jakob</div>
-              <div class="toastmasters-phone">
-                Phone: <a href="tel:+46765576156">+46 76 577 61 56</a>
-              </div>
-            </li>
-          </ul>
-
-          <p class="menu-note">
-            For practical questions about the day (times, locations, special needs),
-            you are of course welcome to contact us or the toastmasters.
-          </p>
-        </div>
-      </section>
-
-      <!-- RSVP -->
-      <section class="section" id="rsvp">
-        <div class="section-header">
-          <div class="section-title">RSVP</div>
-          <div class="section-kicker">Join us</div>
-        </div>
-        <div class="section-body">
-          <div class="rsvp-grid">
-            <div class="rsvp-main">
-              <div class="rsvp-date">Please RSVP by 30 April 2026</div>
-              <p>
-                To help us plan the day with care, we kindly ask you to RSVP as early as possible.
-                When you reply, please remember to include:
-              </p>
-              <ul class="dress-list">
-                <li>Full name(s) of all guests in your party</li>
-                <li>Whether you will attend the ceremony, the reception, or both</li>
-                <li>Any food allergies or special dietary requirements</li>
-              </ul>
-
-              <div class="rsvp-highlight">
-                💌 We can’t wait to celebrate with you!
-              </div>
-
-              <div class="rsvp-actions">
-             
-                <span class="chip-link">
-                  🔗 <a href="https://docs.google.com/forms/d/e/1FAIpQLSeUb0kKApKCQ6nN5uYBuQKEchbijVOpIvMruv33YzDw5MA6Hw/viewform?usp=dialog">Online RSVP form</a>
-                </span>
-              </div>
-            </div>
-
-            <aside class="rsvp-side">
-              <h4>Adults-only reception</h4>
-              <p>
-                We truly love your little ones, but to keep the evening calm and relaxed,
-                the reception will be an adults-only celebration.
-              </p>
-              <p style="margin-top:6px;">
-                Thank you for understanding and helping us create a special atmosphere for everyone.
-              </p>
-            </aside>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer>
-      <div>With love, Bozhidar &amp; Melissa</div>
-      <div class="footer-links">
-        <a href="#details">The Day</a>
-        <a href="#venues">Locations</a>
-        <a href="#menu">Menu</a>
-        <a href="#dresscode">Dress code</a>
-        <a href="#traditions">Celebration</a>
-        <a href="#mood">Playlist</a>
-        <a href="#gifts">Gifts</a>
-        <a href="#explore">Explore</a>
-        <a href="#toastmasters">Toastmasters</a>
-        <a href="#top">Back to top ↑</a>
-      </div>
-    </footer>
-  </div>
-
-  <script>
-    // Mobile navigation toggle
-    const navToggle = document.getElementById("navToggle");
-    const navLinks = document.getElementById("navLinks");
-
-    if (navToggle && navLinks) {
-      navToggle.addEventListener("click", () => {
-        navLinks.classList.toggle("open");
-      });
-
-      navLinks.querySelectorAll("a").forEach(link => {
-        link.addEventListener("click", () => {
-          navLinks.classList.remove("open");
-        });
-      });
-    }
-
-    // Countdown to the wedding ceremony (4 July 2026, 16:00 local time)
-    const targetDate = new Date("2026-07-04T16:00:00");
-    const daysEl = document.getElementById("days");
-    const hoursEl = document.getElementById("hours");
-    const minutesEl = document.getElementById("minutes");
-    const secondsEl = document.getElementById("seconds");
-
-    function updateCountdown() {
-      const now = new Date();
-      const diff = targetDate - now;
-
-      if (diff <= 0) {
-        if (daysEl)  daysEl.textContent = "0";
-        if (hoursEl) hoursEl.textContent = "0";
-        if (minutesEl) minutesEl.textContent = "0";
-        if (secondsEl) secondsEl.textContent = "0";
-        return;
-      }
-
-      const totalSeconds = Math.floor(diff / 1000);
-      const days = Math.floor(totalSeconds / (3600 * 24));
-      const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
-      const minutes = Math.floor((totalSeconds % 3600) / 60);
-      const seconds = totalSeconds % 60;
-
-      if (daysEl) daysEl.textContent = days;
-      if (hoursEl) hoursEl.textContent = hours;
-      if (minutesEl) minutesEl.textContent = minutes;
-      if (secondsEl) secondsEl.textContent = seconds;
-    }
-
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  </script>
 </body>
 </html>

@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bozhidar & Melissa – Wedding</title>
 
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23d8a6b4'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -36,6 +38,18 @@
       padding: 0;
     }
 
+    /* --- SCROLL ANIMATION CSS (Punkt 3) --- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px); /* Startar lite längre ner */
+      transition: all 1s ease-out; /* Mjuk övergång på 1 sekund */
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0); /* Återgår till sin plats */
+    }
+
     /* --- PAPPERS-TEXTUR --- */
     body::before {
       content: "";
@@ -59,6 +73,7 @@
       color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden; /* Förhindrar sido-scroll under animation */
     }
 
     a {
@@ -85,6 +100,7 @@
       backdrop-filter: blur(12px);
       background: rgba(253, 252, 249, 0.85);
       border-bottom: 1px solid rgba(0,0,0,0.03);
+      transition: transform 0.3s ease; /* För mjuk inflygning */
     }
 
     .nav-inner {
@@ -453,7 +469,7 @@
     .hero-date {
       font-family: "Playfair Display", serif;
       font-size: 22px;
-      margin-bottom: 4px; /* Lite mindre för att få plats med knappen */
+      margin-bottom: 4px; 
       color: #2c2724;
     }
     
@@ -963,18 +979,6 @@
       font-family: "Playfair Display", serif;
     }
 
-    /* SPOTIFY FADE IN */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(12px);
-      animation: fadeInSmooth 1.2s ease forwards;
-    }
-
-    @keyframes fadeInSmooth {
-      0% { opacity: 0; transform: translateY(14px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
     /* SPOTIFY BUTTON */
     .spotify-btn {
       display: inline-flex;
@@ -1018,7 +1022,7 @@
       font-size: 12px;
       color: var(--muted);
       display: flex;
-      flex-direction: column; /* Stacka signatur och länkar */
+      flex-direction: column; 
       gap: 24px;
       border-top: 1px solid #e5e0dc;
       padding-top: 24px;
@@ -1104,25 +1108,25 @@
       }
 
       .hero {
-        padding-top: 24px; /* Lite mindre padding i toppen */
+        padding-top: 24px; 
         padding-inline: 16px;
       }
 
       .hero-title {
-        font-size: 42px; /* Justerad storlek */
+        font-size: 42px; 
         line-height: 1.15;
       }
       
       .hero-subtitle {
-          font-size: 14px; /* Lite mer lättläst på små skärmar */
+          font-size: 14px; 
       }
       
       .hero-card {
-          padding: 20px; /* Mer plats för innehåll */
+          padding: 20px; 
       }
       
       .hero-countdown {
-          gap: 6px; /* Tätare så de ryms */
+          gap: 6px; 
       }
       .countdown-number {
           font-size: 16px;
@@ -1132,13 +1136,13 @@
       }
 
       .section {
-        padding-inline: 20px; /* Mer luft i sidled */
+        padding-inline: 20px; 
         padding-top: 24px;
         padding-bottom: 24px;
       }
       
       .timeline-item {
-          grid-template-columns: 60px minmax(0, 1fr); /* Mer plats till texten */
+          grid-template-columns: 60px minmax(0, 1fr); 
           font-size: 13px;
       }
       
@@ -1154,7 +1158,7 @@
 </head>
 <body>
   <div class="page" id="top">
-    <header class="nav">
+    <header class="nav reveal">
       <div class="nav-inner">
         <div class="brand">
           <div class="brand-mark"></div>
@@ -1181,7 +1185,7 @@
       </div>
     </header>
 
-    <section class="hero">
+    <section class="hero reveal">
       <div class="hero-inner">
         <div>
           <div class="eyebrow">
@@ -1291,7 +1295,7 @@
     </section>
 
     <main>
-      <section class="section" id="details">
+      <section class="section reveal" id="details">
         <div class="section-header">
           <div class="section-title">The Day</div>
           <div class="section-kicker">Schedule</div>
@@ -1348,7 +1352,7 @@
         </div>
       </section>
 
-      <section class="section" id="venues">
+      <section class="section reveal" id="venues">
         <div class="section-header">
           <div class="section-title">Ceremony & Reception</div>
           <div class="section-kicker">Locations</div>
@@ -1397,7 +1401,7 @@
         </div>
       </section>
 
-      <section class="section" id="menu">
+      <section class="section reveal" id="menu">
         <div class="section-header">
           <div class="section-title">Menu</div>
           <div class="section-kicker">Food & Drinks</div>
@@ -1468,7 +1472,7 @@
         </div>
       </section>
 
-      <section class="section" id="dresscode">
+      <section class="section reveal" id="dresscode">
         <div class="section-header">
           <div class="section-title">Dress Code</div>
           <div class="section-kicker">Classy & Elegant</div>
@@ -1518,7 +1522,7 @@
         </div>
       </section>
 
-      <section class="section" id="traditions">
+      <section class="section reveal" id="traditions">
         <div class="section-header">
           <div class="section-title">Celebration & Traditions</div>
           <div class="section-kicker">Bulgarian & Lebanese vibes</div>
@@ -1541,7 +1545,7 @@ Let’s laugh, dance, and celebrate together — this night holds a very special
         </div>
       </section>
 
-      <section class="section fade-in" id="mood">
+      <section class="section reveal" id="mood">
         <div class="section-header">
           <div class="section-title">Get in the Mood</div>
           <div class="section-kicker">Wedding vibes</div>
@@ -1567,7 +1571,7 @@ Let’s laugh, dance, and celebrate together — this night holds a very special
         </div>
       </section>
 
-      <section class="section" id="gifts">
+      <section class="section reveal" id="gifts">
         <div class="section-header">
           <div class="section-title">Gifts</div>
           <div class="section-kicker">Presents</div>
@@ -1587,7 +1591,7 @@ Let’s laugh, dance, and celebrate together — this night holds a very special
         </div>
       </section>
 
-      <section class="section" id="explore">
+      <section class="section reveal" id="explore">
         <div class="section-header">
           <div class="section-title">Explore Gothenburg</div>
           <div class="section-kicker">Top 5 things to do</div>
@@ -1668,7 +1672,7 @@ Let’s laugh, dance, and celebrate together — this night holds a very special
         </div>
       </section>
 
-      <section class="section" id="toastmasters">
+      <section class="section reveal" id="toastmasters">
         <div class="section-header">
           <div class="section-title">Toastmasters & Contact</div>
           <div class="section-kicker">For speeches & surprises</div>
@@ -1706,7 +1710,7 @@ Let’s laugh, dance, and celebrate together — this night holds a very special
         </div>
       </section>
 
-      <section class="section" id="rsvp">
+      <section class="section reveal" id="rsvp">
         <div class="section-header">
           <div class="section-title">RSVP</div>
           <div class="section-kicker">Join us</div>
@@ -1752,7 +1756,7 @@ Let’s laugh, dance, and celebrate together — this night holds a very special
       </section>
     </main>
 
-    <footer>
+    <footer class="reveal">
       <div class="footer-signature">With love, Bozhidar & Melissa</div>
       
       <div class="footer-links">
@@ -1787,7 +1791,7 @@ Let’s laugh, dance, and celebrate together — this night holds a very special
       });
     }
 
-    // Countdown to the wedding ceremony (4 July 2026, 16:00 local time)
+    // Countdown logic
     const targetDate = new Date("2026-07-04T16:00:00");
     const daysEl = document.getElementById("days");
     const hoursEl = document.getElementById("hours");
@@ -1820,6 +1824,27 @@ Let’s laugh, dance, and celebrate together — this night holds a very special
 
     updateCountdown();
     setInterval(updateCountdown, 1000);
+
+    // --- ANIMATION SCRIPT (Punkt 3: Scroll Reveal) ---
+    // Denna kod tittar efter element med klassen "reveal" och lägger till "active" när de syns
+    const observerOptions = {
+      threshold: 0.1, // Starta när 10% av elementet syns
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+          // Om du vill att animationen bara ska ske en gång, avkommentera raden nedan:
+          // observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach((el) => {
+      observer.observe(el);
+    });
   </script>
 </body>
 </html>

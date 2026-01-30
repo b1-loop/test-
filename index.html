@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -14,17 +14,17 @@
 
   <style>
     :root {
-      /* Lite varmare/gräddigare toner för papperskänslan */
+      /* Pappers-tema färger */
       --bg: #f5f2ec;
       --bg-soft: #fffdf9; 
       --card: #ffffff;
       --accent: #d8a6b4;
       --accent-soft: rgba(216, 166, 180, 0.16);
-      --text: #2c2724; /* Lite mjukare svart, mer som mörkgrått bläck */
+      --text: #2c2724; 
       --muted: #756f6b;
       --border: #e6e2dd;
-      --shadow-soft: 0 10px 30px -5px rgba(60, 50, 40, 0.06); /* Varmare skugga */
-      --radius-lg: 2px; /* Lite skarpare hörn kan ibland kännas mer som tjockt papper, men behåller dina rundade */
+      --shadow-soft: 0 10px 30px -5px rgba(60, 50, 40, 0.06);
+      --radius-lg: 2px;
       --radius-pill: 999px;
       --max-width: 1120px;
       --transition: 220ms ease;
@@ -36,8 +36,7 @@
       padding: 0;
     }
 
-    /* --- PAPPERS-TEXTUR LÖSNING --- */
-    /* Detta skapar texturen över hela sidan utan externa bilder */
+    /* --- PAPPERS-TEXTUR --- */
     body::before {
       content: "";
       position: fixed;
@@ -45,9 +44,9 @@
       left: 0;
       width: 100%;
       height: 100%;
-      pointer-events: none; /* Gör att man kan klicka igenom texturen */
+      pointer-events: none;
       z-index: 9999;
-      opacity: 0.07; /* Hur stark texturen ska vara */
+      opacity: 0.07;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
       mix-blend-mode: multiply;
     }
@@ -55,7 +54,6 @@
     body {
       font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
-      /* En mer "pappers-lik" bakgrund istället för den släta gradienten */
       background-color: #faf7f2;
       background-image: linear-gradient(to bottom, #faf7f2 0%, #f0ece6 100%);
       color: var(--text);
@@ -80,13 +78,12 @@
     }
 
     /* NAVBAR */
-
     .nav {
       position: sticky;
       top: 0;
       z-index: 40;
       backdrop-filter: blur(12px);
-      background: rgba(253, 252, 249, 0.85); /* Lite mer genomskinlig för texturen */
+      background: rgba(253, 252, 249, 0.85);
       border-bottom: 1px solid rgba(0,0,0,0.03);
     }
 
@@ -110,7 +107,6 @@
       white-space: nowrap;
     }
 
-    /* --- MONOGRAM: B ♥ M --- */
     .brand-mark {
       width: 44px;
       height: 44px;
@@ -180,7 +176,6 @@
     }
 
     /* NAV-LINKS */
-
     .nav-links {
       display: flex;
       align-items: center;
@@ -206,7 +201,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      height: 1px; /* Tunnare linje för penna-känsla */
+      height: 1px;
       background: #d8a6b4;
       transform: scaleX(0);
       transform-origin: center;
@@ -228,7 +223,7 @@
       padding: 7px 16px;
       border-radius: var(--radius-pill);
       border: 1px solid rgba(216, 166, 180, 0.5);
-      background: #fff0f5; /* Enkel ljus färg */
+      background: #fff0f5;
       color: #4b1f2b;
       font-size: 12px;
       font-weight: 600;
@@ -266,11 +261,9 @@
     }
 
     /* HERO */
-
     .hero {
       padding: 48px 20px 64px;
       position: relative;
-      /* Ingen gradient här, vi använder body-bakgrunden + textur */
     }
 
     .hero-inner {
@@ -313,9 +306,9 @@
       text-transform: none;
       line-height: 1.1;
       margin-bottom: 12px;
-      color: #1a1a1a;          /* Något mjukare svart för "bläck"-effekt */
+      color: #1a1a1a;
       font-weight: 400;     
-      text-shadow: 2px 2px 0px rgba(255,255,255,0.5); /* Liten highlight */
+      text-shadow: 2px 2px 0px rgba(255,255,255,0.5);
     }
 
     .hero-title span {
@@ -327,7 +320,6 @@
       color: #1a1a1a;
       margin-bottom: 6px;
     }
-
 
     .hero-subtitle {
       font-size: 15px;
@@ -391,7 +383,7 @@
     }
 
     .btn-primary {
-      background: #fdf0f4; /* Mattare, papperslik färg */
+      background: #fdf0f4;
       color: #4b1f2b;
       font-weight: 600;
       box-shadow: 0 4px 6px rgba(0,0,0,0.05);
@@ -423,22 +415,19 @@
     }
 
     /* HERO SIDE CARD */
-
     .hero-card {
-      border-radius: 4px; /* Lite mindre rundat för kort-känsla */
+      border-radius: 4px;
       padding: 24px;
       background: #ffffff;
-      /* En fin kant som ser ut som brevpapper */
       border: 1px solid #eae5df;
       box-shadow: 
         0 1px 2px rgba(0,0,0,0.05), 
         0 8px 16px rgba(0,0,0,0.03),
-        inset 0 0 40px rgba(250, 246, 240, 0.5); /* Inre glöd */
+        inset 0 0 40px rgba(250, 246, 240, 0.5);
       position: relative;
       overflow: hidden;
     }
     
-    /* En dekorativ ram inuti kortet */
     .hero-card::before {
         content: "";
         position: absolute;
@@ -464,8 +453,12 @@
     .hero-date {
       font-family: "Playfair Display", serif;
       font-size: 22px;
-      margin-bottom: 12px;
+      margin-bottom: 4px; /* Lite mindre för att få plats med knappen */
       color: #2c2724;
+    }
+    
+    .calendar-btn-container {
+        margin-bottom: 14px;
     }
 
     .hero-location {
@@ -526,7 +519,6 @@
     }
 
     /* SECTIONS */
-
     main {
       padding: 10px 20px 60px;
     }
@@ -535,24 +527,11 @@
       max-width: var(--max-width);
       margin: 0 auto 40px;
       padding: 30px 24px 32px;
-      border-radius: 2px; /* Papperskort */
+      border-radius: 2px;
       background: #ffffff;
       border: 1px solid #eae5df;
-      /* Pappersskugga */
       box-shadow: 0 2px 4px rgba(0,0,0,0.02), 0 10px 20px rgba(0,0,0,0.02);
       position: relative;
-    }
-    
-    /* Liten hörndetalj på sektionerna */
-    .section::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        border-width: 0 16px 16px 0;
-        border-style: solid;
-        border-color: #faf7f2 #faf7f2 transparent transparent; /* Liten "vikt hörn" effekt om bakgrunden matchar */
-        display: none; /* Avstängd för renare look, slå på om du vill ha vikt hörn */
     }
 
     .section-header {
@@ -561,7 +540,7 @@
       align-items: flex-end;
       gap: 14px;
       margin-bottom: 20px;
-      border-bottom: 2px solid #f2efeb; /* Dubbel linje ser trevligt ut */
+      border-bottom: 2px solid #f2efeb;
       padding-bottom: 12px;
     }
 
@@ -586,7 +565,6 @@
     }
 
     /* SCHEDULE */
-
     .timeline {
       display: grid;
       gap: 10px;
@@ -632,7 +610,6 @@
     }
 
     /* VENUES */
-
     .venue-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -703,7 +680,6 @@
     }
 
     /* MENU */
-
     .menu-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -716,7 +692,7 @@
       border-radius: 2px;
       background: #fff;
       border: 1px solid #e8e1d9;
-      box-shadow: 2px 2px 0px rgba(240, 235, 230, 1); /* "Offset" skugga för retro papperslook */
+      box-shadow: 2px 2px 0px rgba(240, 235, 230, 1);
       display: flex;
       flex-direction: column;
       gap: 6px;
@@ -759,7 +735,6 @@
     }
 
     /* DRESS CODE */
-
     .dress-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr);
@@ -832,7 +807,6 @@
     }
 
     /* TRADITIONS */
-
     .traditions-highlight {
       margin-top: 10px;
       padding: 14px 16px;
@@ -850,13 +824,11 @@
     }
 
     /* GIFTS */
-
     .section#gifts p + p {
       margin-top: 6px;
     }
 
-    /* EXPLORE GOTHENBURG */
-
+    /* EXPLORE */
     .explore-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -894,7 +866,6 @@
     }
 
     /* TOASTMASTERS */
-
     .toastmasters-list {
       list-style: none;
       margin-top: 10px;
@@ -930,7 +901,6 @@
     }
 
     /* RSVP */
-
     .rsvp-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr);
@@ -993,7 +963,7 @@
       font-family: "Playfair Display", serif;
     }
 
-    /* --- FADE IN FOR SPOTIFY SECTION --- */
+    /* SPOTIFY FADE IN */
     .fade-in {
       opacity: 0;
       transform: translateY(12px);
@@ -1005,7 +975,7 @@
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* --- SPOTIFY BUTTON --- */
+    /* SPOTIFY BUTTON */
     .spotify-btn {
       display: inline-flex;
       align-items: center;
@@ -1041,7 +1011,6 @@
     }
 
     /* FOOTER */
-
     footer {
       max-width: var(--max-width);
       margin: 0 auto 36px;
@@ -1049,17 +1018,26 @@
       font-size: 12px;
       color: var(--muted);
       display: flex;
-      justify-content: space-between;
-      gap: 10px;
+      flex-direction: column; /* Stacka signatur och länkar */
+      gap: 24px;
       border-top: 1px solid #e5e0dc;
-      padding-top: 12px;
+      padding-top: 24px;
       align-items: center;
-      flex-wrap: wrap;
+    }
+    
+    .footer-signature {
+        font-family: "Great Vibes", cursive;
+        font-size: 36px;
+        color: #4b1f2b; /* Bläckfärg */
+        transform: rotate(-3deg);
+        margin-bottom: 8px;
+        text-shadow: 1px 1px 0px rgba(0,0,0,0.05);
     }
 
     .footer-links {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 10px;
       align-items: center;
     }
@@ -1077,7 +1055,6 @@
     }
 
     /* RESPONSIVE */
-
     @media (max-width: 900px) {
       .hero-inner {
         grid-template-columns: minmax(0, 1fr);
@@ -1127,20 +1104,50 @@
       }
 
       .hero {
-        padding-top: 32px;
-      }
-
-      .hero-title {
-        font-size: 40px;
-      }
-
-      .section {
+        padding-top: 24px; /* Lite mindre padding i toppen */
         padding-inline: 16px;
       }
 
+      .hero-title {
+        font-size: 42px; /* Justerad storlek */
+        line-height: 1.15;
+      }
+      
+      .hero-subtitle {
+          font-size: 14px; /* Lite mer lättläst på små skärmar */
+      }
+      
+      .hero-card {
+          padding: 20px; /* Mer plats för innehåll */
+      }
+      
+      .hero-countdown {
+          gap: 6px; /* Tätare så de ryms */
+      }
+      .countdown-number {
+          font-size: 16px;
+      }
+      .countdown-label {
+          font-size: 9px;
+      }
+
+      .section {
+        padding-inline: 20px; /* Mer luft i sidled */
+        padding-top: 24px;
+        padding-bottom: 24px;
+      }
+      
+      .timeline-item {
+          grid-template-columns: 60px minmax(0, 1fr); /* Mer plats till texten */
+          font-size: 13px;
+      }
+      
+      .timeline-time {
+          font-size: 11px;
+      }
+
       footer {
-        flex-direction: column;
-        align-items: flex-start;
+        padding-bottom: 40px;
       }
     }
   </style>
@@ -1233,6 +1240,15 @@
           <div class="hero-card-inner">
             <div class="hero-tagline">Countdown to our "I do"</div>
             <div class="hero-date">4 July 2026 • 16:00</div>
+            
+            <div class="calendar-btn-container">
+                 <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding:+Bozhidar+%26+Melissa&dates=20260704T140000Z/20260705T010000Z&details=Ceremony+at+Annedalskyrkan,+Reception+at+Venue+Wedding&location=Annedalskyrkan,+Albin+Holms+Backe+10,+Gothenburg" 
+                 target="_blank" 
+                 class="chip-link">
+                 📅 Save to Google Calendar
+              </a>
+            </div>
+
             <div class="hero-location">
               Annedalskyrkan, Albin Holms Backe 10 • Venue Wedding, Angeredsvinkeln 5
             </div>
@@ -1266,7 +1282,7 @@
                 ✨ <span>Dress code: Classy & Elegant</span>
               </div>
               <div class="hero-chip">
-                💌 <span>You’ll find all the details you need further down on this page.</span>
+                💌 <span>Details further down.</span>
               </div>
             </div>
           </div>
@@ -1737,7 +1753,8 @@ Let’s laugh, dance, and celebrate together — this night holds a very special
     </main>
 
     <footer>
-      <div>With love, Bozhidar & Melissa</div>
+      <div class="footer-signature">With love, Bozhidar & Melissa</div>
+      
       <div class="footer-links">
         <a href="#details">The Day</a>
         <a href="#venues">Locations</a>

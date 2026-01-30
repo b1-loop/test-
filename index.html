@@ -20,7 +20,8 @@
       --bg: #f5f2ec;
       --bg-soft: #fffdf9; 
       --card: #ffffff;
-      --accent: #d8a6b4;
+      --accent: #d8a6b4; /* Rosa accent */
+      --accent-dark: #b68895; /* Mörkare för skuggor */
       --accent-soft: rgba(216, 166, 180, 0.16);
       --text: #2c2724; 
       --muted: #756f6b;
@@ -38,19 +39,149 @@
       padding: 0;
     }
 
-    /* --- SCROLL ANIMATION CSS (Punkt 3) --- */
+    /* --- KUVERT / ÖPPNINGS ANIMATION CSS --- */
+    
+    /* Behållaren för hela introt */
+    .envelope-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 99999; /* Allra högst upp */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      /* Om JavaScript är avstängt eller misslyckas, dölj introt så sidan går att använda */
+      pointer-events: auto;
+    }
+
+    /* Pappers-halvorna */
+    .envelope-flap {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 50.5%; /* Lite överlapp för att undvika glipor */
+      background-color: #f0ece6; /* Lite mörkare än sidans bakgrund för kontrast */
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      z-index: 1;
+      transition: transform 1.5s cubic-bezier(0.7, 0, 0.3, 1);
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    }
+
+    .envelope-top {
+      top: 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      transform-origin: top;
+    }
+
+    .envelope-bottom {
+      bottom: 0;
+      border-top: 1px solid rgba(255,255,255,0.8);
+      transform-origin: bottom;
+    }
+
+    /* Lack-sigillet */
+    .wax-seal {
+      position: relative;
+      z-index: 10;
+      width: 120px;
+      height: 120px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 
+        inset 0 0 20px rgba(0,0,0,0.2), /* Inre djup */
+        0 4px 6px rgba(0,0,0,0.1), /* Yttre skugga */
+        0 0 0 6px rgba(216, 166, 180, 0.4); /* Yttre ring */
+      border: 2px solid rgba(255,255,255,0.3);
+      transition: transform 0.4s ease, opacity 0.8s ease;
+      /* Oregelbunden form för vax-look (optional) */
+      clip-path: circle(50% at 50% 50%); 
+    }
+
+    .wax-seal:hover {
+      transform: scale(1.05);
+    }
+
+    /* Texten i sigillet */
+    .wax-seal-initials {
+      font-family: "Great Vibes", cursive;
+      font-size: 38px;
+      color: #fff;
+      text-shadow: 1px 1px 2px rgba(139, 88, 103, 0.6);
+      line-height: 0.8;
+      margin-top: 6px;
+    }
+    
+    .wax-seal-text {
+      font-family: "Poppins", sans-serif;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.85);
+      margin-top: 4px;
+    }
+
+    /* Animation för att locka till klick */
+    .wax-seal::after {
+      content: "";
+      position: absolute;
+      top: -10px; left: -10px; right: -10px; bottom: -10px;
+      border-radius: 50%;
+      border: 1px solid var(--accent);
+      opacity: 0;
+      animation: pulse-ring 2s infinite;
+    }
+
+    @keyframes pulse-ring {
+      0% { transform: scale(0.8); opacity: 0.8; }
+      100% { transform: scale(1.3); opacity: 0; }
+    }
+
+    /* --- KLASSER FÖR NÄR DET ÖPPNAS --- */
+    .envelope-overlay.open {
+      pointer-events: none; /* Släpp igenom klick till sidan */
+    }
+
+    .envelope-overlay.open .envelope-top {
+      transform: translateY(-100%);
+    }
+
+    .envelope-overlay.open .envelope-bottom {
+      transform: translateY(100%);
+    }
+
+    .envelope-overlay.open .wax-seal {
+      transform: scale(0.5);
+      opacity: 0;
+    }
+
+    /* --- DÖLJ INTROT OM DET REDAN ÄR SETT (via JS) --- */
+    .envelope-overlay.hidden {
+      display: none;
+    }
+
+    /* --- STANDARD SID-CSS --- */
+
+    /* SCROLL ANIMATION CSS */
     .reveal {
       opacity: 0;
-      transform: translateY(40px); /* Startar lite längre ner */
-      transition: all 1s ease-out; /* Mjuk övergång på 1 sekund */
+      transform: translateY(40px);
+      transition: all 1s ease-out;
     }
 
     .reveal.active {
       opacity: 1;
-      transform: translateY(0); /* Återgår till sin plats */
+      transform: translateY(0);
     }
 
-    /* --- PAPPERS-TEXTUR --- */
+    /* PAPPERS-TEXTUR */
     body::before {
       content: "";
       position: fixed;
@@ -73,7 +204,7 @@
       color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden; /* Förhindrar sido-scroll under animation */
+      overflow-x: hidden;
     }
 
     a {
@@ -100,7 +231,7 @@
       backdrop-filter: blur(12px);
       background: rgba(253, 252, 249, 0.85);
       border-bottom: 1px solid rgba(0,0,0,0.03);
-      transition: transform 0.3s ease; /* För mjuk inflygning */
+      transition: transform 0.3s ease;
     }
 
     .nav-inner {
@@ -323,7 +454,7 @@
       line-height: 1.1;
       margin-bottom: 12px;
       color: #1a1a1a;
-      font-weight: 400;     
+      font-weight: 400;      
       text-shadow: 2px 2px 0px rgba(255,255,255,0.5);
     }
 
@@ -1157,6 +1288,16 @@
   </style>
 </head>
 <body>
+
+  <div id="envelopeOverlay" class="envelope-overlay">
+    <div class="envelope-flap envelope-top"></div>
+    <div class="envelope-flap envelope-bottom"></div>
+    
+    <button class="wax-seal" onclick="openEnvelope()" title="Open invitation">
+      <div class="wax-seal-initials">B&M</div>
+      <div class="wax-seal-text">Open</div>
+    </button>
+  </div>
   <div class="page" id="top">
     <header class="nav reveal">
       <div class="nav-inner">
@@ -1734,7 +1875,7 @@ Let’s laugh, dance, and celebrate together — this night holds a very special
               </div>
 
               <div class="rsvp-actions">
-               
+                
                 <span class="chip-link">
                   🔗 <a href="https://docs.google.com/forms/d/e/1FAIpQLSeUb0kKApKCQ6nN5uYBuQKEchbijVOpIvMruv33YzDw5MA6Hw/viewform?usp=dialog">Online RSVP form</a>
                 </span>
@@ -1775,7 +1916,38 @@ Let’s laugh, dance, and celebrate together — this night holds a very special
   </div>
 
   <script>
-    // Mobile navigation toggle
+    // --- ENVELOPE OPENING LOGIC ---
+    function checkEnvelope() {
+      // Check session storage to see if user has already opened the invite in this session
+      const hasOpened = sessionStorage.getItem("weddingInviteOpened");
+      const envelope = document.getElementById("envelopeOverlay");
+
+      if (hasOpened) {
+        // If already opened, hide immediately without animation
+        envelope.classList.add("hidden");
+      }
+    }
+
+    function openEnvelope() {
+      const envelope = document.getElementById("envelopeOverlay");
+      
+      // Start animation
+      envelope.classList.add("open");
+
+      // Save to session storage so they don't have to open it again on reload
+      sessionStorage.setItem("weddingInviteOpened", "true");
+
+      // Remove from DOM after animation completes to free up resources
+      setTimeout(() => {
+        envelope.style.display = "none";
+      }, 1500);
+    }
+
+    // Run check immediately
+    checkEnvelope();
+
+
+    // --- MOBILE NAV ---
     const navToggle = document.getElementById("navToggle");
     const navLinks = document.getElementById("navLinks");
 
@@ -1791,7 +1963,7 @@ Let’s laugh, dance, and celebrate together — this night holds a very special
       });
     }
 
-    // Countdown logic
+    // --- COUNTDOWN ---
     const targetDate = new Date("2026-07-04T16:00:00");
     const daysEl = document.getElementById("days");
     const hoursEl = document.getElementById("hours");
@@ -1825,10 +1997,9 @@ Let’s laugh, dance, and celebrate together — this night holds a very special
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // --- ANIMATION SCRIPT (Punkt 3: Scroll Reveal) ---
-    // Denna kod tittar efter element med klassen "reveal" och lägger till "active" när de syns
+    // --- SCROLL REVEAL ANIMATION ---
     const observerOptions = {
-      threshold: 0.1, // Starta när 10% av elementet syns
+      threshold: 0.1,
       rootMargin: "0px 0px -50px 0px"
     };
 
@@ -1836,8 +2007,6 @@ Let’s laugh, dance, and celebrate together — this night holds a very special
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("active");
-          // Om du vill att animationen bara ska ske en gång, avkommentera raden nedan:
-          // observer.unobserve(entry.target);
         }
       });
     }, observerOptions);

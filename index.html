@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -14,16 +14,17 @@
 
   <style>
     :root {
+      /* Lite varmare/gräddigare toner för papperskänslan */
       --bg: #f5f2ec;
-      --bg-soft: #fdfbf7;
+      --bg-soft: #fffdf9; 
       --card: #ffffff;
       --accent: #d8a6b4;
       --accent-soft: rgba(216, 166, 180, 0.16);
-      --text: #1f2933;
-      --muted: #6b7280;
-      --border: #e5e7eb;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.08);
-      --radius-lg: 18px;
+      --text: #2c2724; /* Lite mjukare svart, mer som mörkgrått bläck */
+      --muted: #756f6b;
+      --border: #e6e2dd;
+      --shadow-soft: 0 10px 30px -5px rgba(60, 50, 40, 0.06); /* Varmare skugga */
+      --radius-lg: 2px; /* Lite skarpare hörn kan ibland kännas mer som tjockt papper, men behåller dina rundade */
       --radius-pill: 999px;
       --max-width: 1120px;
       --transition: 220ms ease;
@@ -35,10 +36,28 @@
       padding: 0;
     }
 
+    /* --- PAPPERS-TEXTUR LÖSNING --- */
+    /* Detta skapar texturen över hela sidan utan externa bilder */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none; /* Gör att man kan klicka igenom texturen */
+      z-index: 9999;
+      opacity: 0.07; /* Hur stark texturen ska vara */
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      mix-blend-mode: multiply;
+    }
+
     body {
       font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #faf6f0 0, #f5f2ec 40%, #f1ebe2 100%);
+      /* En mer "pappers-lik" bakgrund istället för den släta gradienten */
+      background-color: #faf7f2;
+      background-image: linear-gradient(to bottom, #faf7f2 0%, #f0ece6 100%);
       color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
@@ -56,6 +75,8 @@
 
     .page {
       min-height: 100vh;
+      position: relative;
+      z-index: 1;
     }
 
     /* NAVBAR */
@@ -64,14 +85,9 @@
       position: sticky;
       top: 0;
       z-index: 40;
-      backdrop-filter: blur(18px);
-      background: linear-gradient(
-        to bottom,
-        rgba(253, 252, 249, 0.96),
-        rgba(253, 252, 249, 0.92),
-        transparent
-      );
-      border-bottom: 1px solid rgba(229, 231, 235, 0.9);
+      backdrop-filter: blur(12px);
+      background: rgba(253, 252, 249, 0.85); /* Lite mer genomskinlig för texturen */
+      border-bottom: 1px solid rgba(0,0,0,0.03);
     }
 
     .nav-inner {
@@ -99,12 +115,12 @@
       width: 44px;
       height: 44px;
       border-radius: 50%;
-      background: linear-gradient(145deg, #ffffff, #f4efe9);
+      background: #fff;
       display: grid;
       place-items: center;
       font-family: "Playfair Display", serif;
       border: 1px solid #e8e1d9;
-      box-shadow: 0 4px 14px rgba(180, 160, 140, 0.25);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
       position: relative;
       overflow: hidden;
       letter-spacing: 0.4px;
@@ -190,9 +206,8 @@
       left: 0;
       right: 0;
       bottom: 0;
-      height: 2px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #e9c4cf, #d1b59a);
+      height: 1px; /* Tunnare linje för penna-känsla */
+      background: #d8a6b4;
       transform: scaleX(0);
       transform-origin: center;
       transition: transform 220ms ease;
@@ -212,14 +227,14 @@
       margin-left: auto;
       padding: 7px 16px;
       border-radius: var(--radius-pill);
-      border: 1px solid rgba(216, 166, 180, 0.9);
-      background: radial-gradient(circle at top left, #ffffff 0, #e9c4cf 30%, #f8e3e8 85%);
+      border: 1px solid rgba(216, 166, 180, 0.5);
+      background: #fff0f5; /* Enkel ljus färg */
       color: #4b1f2b;
       font-size: 12px;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      box-shadow: var(--shadow-soft);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
       display: flex;
       align-items: center;
       gap: 6px;
@@ -236,8 +251,7 @@
 
     .nav-cta:hover {
       transform: translateY(-1px) scale(1.01);
-      filter: brightness(1.03);
-      box-shadow: 0 18px 45px rgba(148, 163, 184, 0.45);
+      box-shadow: 0 4px 12px rgba(216, 166, 180, 0.2);
     }
 
     .nav-toggle {
@@ -256,13 +270,7 @@
     .hero {
       padding: 48px 20px 64px;
       position: relative;
-      overflow: hidden;
-      background: radial-gradient(
-        circle at top center,
-        #fff8f4 0%,
-        #f5f2ec 55%,
-        #efe8e0 100%
-      );
+      /* Ingen gradient här, vi använder body-bakgrunden + textur */
     }
 
     .hero-inner {
@@ -280,7 +288,7 @@
       gap: 8px;
       padding: 4px 10px 4px 4px;
       border-radius: var(--radius-pill);
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.6);
       border: 1px solid var(--border);
       color: var(--muted);
       font-size: 12px;
@@ -292,7 +300,8 @@
     .eyebrow-pill {
       padding: 2px 10px;
       border-radius: 999px;
-      background: radial-gradient(circle at top left, #ffffff 0, #e9c4cf 30%, #fdf7f4 80%);
+      background: #fdf7f4;
+      border: 1px solid #efe8e0;
       color: #4b1f2b;
       font-weight: 600;
     }
@@ -304,17 +313,18 @@
       text-transform: none;
       line-height: 1.1;
       margin-bottom: 12px;
-      color: #000000;          /* samma färg för allt */
-      font-weight: 400;        /* lite tunnare */
+      color: #1a1a1a;          /* Något mjukare svart för "bläck"-effekt */
+      font-weight: 400;     
+      text-shadow: 2px 2px 0px rgba(255,255,255,0.5); /* Liten highlight */
     }
 
     .hero-title span {
       display: block;
-      font-family: "Great Vibes", cursive; /* samma stil som namnen */
+      font-family: "Great Vibes", cursive;
       font-size: 0.65em;
       letter-spacing: 0.12em;
       text-transform: none;
-      color: #000000;          /* samma färg */
+      color: #1a1a1a;
       margin-bottom: 6px;
     }
 
@@ -341,7 +351,7 @@
       gap: 8px;
       padding: 6px 10px;
       border-radius: var(--radius-pill);
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.6);
       border: 1px solid var(--border);
     }
 
@@ -381,21 +391,21 @@
     }
 
     .btn-primary {
-      background: radial-gradient(circle at top left, #ffffff 0, #e9c4cf 30%, #f8e3e8 85%);
+      background: #fdf0f4; /* Mattare, papperslik färg */
       color: #4b1f2b;
       font-weight: 600;
-      box-shadow: var(--shadow-soft);
-      border-color: rgba(216, 166, 180, 0.9);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      border-color: #e9c4cf;
     }
 
     .btn-primary:hover {
       transform: translateY(-1px) scale(1.01);
-      box-shadow: 0 24px 60px rgba(148, 163, 184, 0.5);
-      filter: brightness(1.05);
+      box-shadow: 0 10px 20px rgba(148, 163, 184, 0.2);
+      background: #fff;
     }
 
     .btn-ghost {
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.5);
       border-color: var(--border);
       color: var(--muted);
     }
@@ -415,13 +425,27 @@
     /* HERO SIDE CARD */
 
     .hero-card {
-      border-radius: 26px;
-      padding: 20px 20px 22px;
-      background: linear-gradient(145deg, #ffffff, #f9f3f1);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow-soft);
+      border-radius: 4px; /* Lite mindre rundat för kort-känsla */
+      padding: 24px;
+      background: #ffffff;
+      /* En fin kant som ser ut som brevpapper */
+      border: 1px solid #eae5df;
+      box-shadow: 
+        0 1px 2px rgba(0,0,0,0.05), 
+        0 8px 16px rgba(0,0,0,0.03),
+        inset 0 0 40px rgba(250, 246, 240, 0.5); /* Inre glöd */
       position: relative;
       overflow: hidden;
+    }
+    
+    /* En dekorativ ram inuti kortet */
+    .hero-card::before {
+        content: "";
+        position: absolute;
+        inset: 6px;
+        border: 1px solid #f5f0eb;
+        border-radius: 2px;
+        pointer-events: none;
     }
 
     .hero-card-inner {
@@ -441,6 +465,7 @@
       font-family: "Playfair Display", serif;
       font-size: 22px;
       margin-bottom: 12px;
+      color: #2c2724;
     }
 
     .hero-location {
@@ -458,15 +483,16 @@
 
     .countdown-item {
       padding: 8px 6px;
-      border-radius: 14px;
-      background: #fdfbf7;
-      border: 1px solid var(--border);
+      border-radius: 2px;
+      background: #fbf9f6;
+      border: 1px solid #ede8e4;
       text-align: center;
     }
 
     .countdown-number {
       font-size: 18px;
       font-weight: 600;
+      color: #4a4542;
     }
 
     .countdown-label {
@@ -493,18 +519,10 @@
       padding: 4px 10px;
       border-radius: 999px;
       border: 1px solid var(--border);
-      background: #fdfbf7;
+      background: #fff;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-    }
-
-    .hero-card-shine {
-      position: absolute;
-      inset: -40%;
-      background: radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.7) 0, transparent 60%);
-      opacity: 0.7;
-      pointer-events: none;
     }
 
     /* SECTIONS */
@@ -516,11 +534,25 @@
     .section {
       max-width: var(--max-width);
       margin: 0 auto 40px;
-      padding: 24px 20px 26px;
-      border-radius: var(--radius-lg);
-      background: var(--bg-soft);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow-soft);
+      padding: 30px 24px 32px;
+      border-radius: 2px; /* Papperskort */
+      background: #ffffff;
+      border: 1px solid #eae5df;
+      /* Pappersskugga */
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02), 0 10px 20px rgba(0,0,0,0.02);
+      position: relative;
+    }
+    
+    /* Liten hörndetalj på sektionerna */
+    .section::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        border-width: 0 16px 16px 0;
+        border-style: solid;
+        border-color: #faf7f2 #faf7f2 transparent transparent; /* Liten "vikt hörn" effekt om bakgrunden matchar */
+        display: none; /* Avstängd för renare look, slå på om du vill ha vikt hörn */
     }
 
     .section-header {
@@ -528,21 +560,22 @@
       justify-content: space-between;
       align-items: flex-end;
       gap: 14px;
-      margin-bottom: 16px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 10px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #f2efeb; /* Dubbel linje ser trevligt ut */
+      padding-bottom: 12px;
     }
 
     .section-title {
       font-family: "Playfair Display", serif;
-      font-size: 18px;
+      font-size: 20px;
       text-transform: uppercase;
       letter-spacing: 0.18em;
+      color: #2c2724;
     }
 
     .section-kicker {
       font-size: 12px;
-      color: var(--muted);
+      color: #999;
       text-transform: uppercase;
       letter-spacing: 0.16em;
     }
@@ -565,18 +598,19 @@
       grid-template-columns: 90px minmax(0, 1fr);
       gap: 12px;
       align-items: start;
-      padding: 10px 12px;
-      border-radius: 14px;
-      background: #ffffff;
-      border: 1px solid var(--border);
+      padding: 14px 12px;
+      border-radius: 2px;
+      background: #fffcf8;
+      border: 1px solid #f0ebe6;
     }
 
     .timeline-time {
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.18em;
-      color: #9ca3af;
+      color: #b65f7c;
       margin-top: 4px;
+      font-weight: 600;
     }
 
     .timeline-main {
@@ -588,7 +622,9 @@
     .timeline-title {
       font-size: 14px;
       color: var(--text);
-      font-weight: 500;
+      font-weight: 600;
+      font-family: "Playfair Display", serif;
+      letter-spacing: 0.02em;
     }
 
     .timeline-sub {
@@ -605,10 +641,10 @@
     }
 
     .venue-card {
-      padding: 12px 12px 13px;
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      background: #ffffff;
+      padding: 16px;
+      border-radius: 2px;
+      border: 1px solid #f0ebe6;
+      background: #fffcf8;
     }
 
     .venue-label {
@@ -620,10 +656,11 @@
     }
 
     .venue-name {
-      font-size: 15px;
+      font-size: 16px;
       color: var(--text);
       font-weight: 500;
       margin-bottom: 4px;
+      font-family: "Playfair Display", serif;
     }
 
     .venue-address {
@@ -641,15 +678,15 @@
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      margin-top: 4px;
+      margin-top: 8px;
     }
 
     .chip-link {
       font-size: 11px;
       padding: 5px 10px;
       border-radius: 999px;
-      border: 1px solid var(--border);
-      background: #ffffff;
+      border: 1px solid #e0dbd6;
+      background: #fff;
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -659,7 +696,7 @@
     }
 
     .chip-link:hover {
-      background: #fdfbf7;
+      background: #fff;
       border-color: rgba(216, 166, 180, 0.9);
       color: var(--text);
       transform: translateY(-1px);
@@ -675,11 +712,11 @@
     }
 
     .menu-card {
-      padding: 14px 14px 15px;
-      border-radius: 18px;
-      background: #ffffff;
-      border: 1px solid var(--border);
-      box-shadow: 0 10px 30px rgba(148, 163, 184, 0.15);
+      padding: 16px;
+      border-radius: 2px;
+      background: #fff;
+      border: 1px solid #e8e1d9;
+      box-shadow: 2px 2px 0px rgba(240, 235, 230, 1); /* "Offset" skugga för retro papperslook */
       display: flex;
       flex-direction: column;
       gap: 6px;
@@ -689,7 +726,11 @@
       font-size: 13px;
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      color: #9ca3af;
+      color: #b65f7c;
+      border-bottom: 1px dotted #ccc;
+      padding-bottom: 4px;
+      margin-bottom: 4px;
+      display: inline-block;
     }
 
     .menu-title {
@@ -712,7 +753,8 @@
 
     .menu-note {
       font-size: 12px;
-      color: var(--muted);
+      color: #888;
+      font-style: italic;
       margin-top: 8px;
     }
 
@@ -726,10 +768,10 @@
     }
 
     .dress-main {
-      padding: 12px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      background: #ffffff;
+      padding: 16px;
+      border-radius: 2px;
+      border: 1px solid #f0ebe6;
+      background: #fffcf9;
     }
 
     .dress-pill {
@@ -738,8 +780,8 @@
       letter-spacing: 0.16em;
       padding: 4px 9px;
       border-radius: 999px;
-      background: #fdfbf7;
-      border: 1px solid var(--border);
+      background: #fff;
+      border: 1px solid #e0dbd6;
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -750,6 +792,7 @@
       font-size: 14px;
       margin-bottom: 4px;
       color: var(--text);
+      font-family: "Playfair Display", serif;
     }
 
     .dress-main p {
@@ -773,10 +816,10 @@
     }
 
     .dress-side {
-      padding: 12px;
-      border-radius: 14px;
-      border: 1px dashed rgba(209, 213, 219, 0.9);
-      background: #ffffff;
+      padding: 16px;
+      border-radius: 2px;
+      border: 1px dashed #d1ccc5;
+      background: #faf8f5;
       font-size: 13px;
       color: var(--muted);
     }
@@ -785,22 +828,25 @@
       font-size: 13px;
       color: var(--text);
       margin-bottom: 4px;
+      font-family: "Playfair Display", serif;
     }
 
     /* TRADITIONS */
 
     .traditions-highlight {
       margin-top: 10px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      background: #ffffff;
-      border: 1px dashed rgba(216, 166, 180, 0.7);
+      padding: 14px 16px;
+      border-radius: 2px;
+      background: #fff0f5;
+      border: 1px solid #eadbe0;
       font-size: 13px;
-      color: var(--muted);
+      color: #5a4a50;
+      font-style: italic;
     }
 
     .traditions-highlight strong {
-      color: #b65f7c;
+      color: #9c4b63;
+      font-style: normal;
     }
 
     /* GIFTS */
@@ -819,10 +865,10 @@
     }
 
     .explore-card {
-      padding: 12px 12px 13px;
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      background: #ffffff;
+      padding: 14px;
+      border-radius: 2px;
+      border: 1px solid #f0ebe6;
+      background: #fff;
       display: flex;
       flex-direction: column;
       gap: 6px;
@@ -832,13 +878,14 @@
       font-size: 15px;
       color: var(--text);
       font-weight: 500;
+      font-family: "Playfair Display", serif;
     }
 
     .explore-tag {
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      color: #9ca3af;
+      color: #b65f7c;
     }
 
     .explore-desc {
@@ -856,6 +903,11 @@
 
     .toastmasters-list li {
       margin-bottom: 8px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 8px;
+    }
+    .toastmasters-list li:last-child {
+      border-bottom: none;
     }
 
     .toastmasters-role {
@@ -898,18 +950,19 @@
       letter-spacing: 0.16em;
       color: #b65f7c;
       margin-bottom: 8px;
+      font-weight: 600;
     }
 
     .rsvp-highlight {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(216, 166, 180, 0.9);
+      padding: 8px 12px;
+      border-radius: 2px;
+      border: 1px solid rgba(216, 166, 180, 0.5);
       background: #fff7fa;
       font-size: 12px;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
     }
 
     .rsvp-actions {
@@ -918,12 +971,17 @@
       gap: 8px;
       margin-top: 6px;
     }
+    
+    .rsvp-actions a {
+        color: #b65f7c;
+        font-weight: 600;
+    }
 
     .rsvp-side {
-      padding: 12px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      background: #ffffff;
+      padding: 16px;
+      border-radius: 2px;
+      border: 1px solid #f0ebe6;
+      background: #fffcf9;
       font-size: 13px;
       color: var(--muted);
     }
@@ -932,6 +990,7 @@
       font-size: 13px;
       color: var(--text);
       margin-bottom: 4px;
+      font-family: "Playfair Display", serif;
     }
 
     /* --- FADE IN FOR SPOTIFY SECTION --- */
@@ -955,18 +1014,18 @@
       font-size: 14px;
       font-weight: 600;
       border-radius: 30px;
-      background: linear-gradient(135deg, #ffffff, #f4efe9);
+      background: #fff;
       color: #7a6259;
       border: 1px solid #e8e1d9;
-      box-shadow: 0 4px 12px rgba(180, 160, 140, 0.25);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
       transition: all 0.25s ease;
       text-decoration: none;
     }
 
     .spotify-btn:hover {
-      transform: translateY(-3px) scale(1.04);
-      box-shadow: 0 10px 20px rgba(180, 160, 140, 0.38);
-      background: linear-gradient(135deg, #fefcfa, #f1e9e1);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 12px rgba(0,0,0,0.08);
+      background: #faf8f6;
     }
 
     .spotify-icon {
@@ -992,7 +1051,7 @@
       display: flex;
       justify-content: space-between;
       gap: 10px;
-      border-top: 1px solid var(--border);
+      border-top: 1px solid #e5e0dc;
       padding-top: 12px;
       align-items: center;
       flex-wrap: wrap;
@@ -1007,13 +1066,14 @@
 
     .footer-links a {
       padding: 4px 9px;
-      border-radius: 999px;
-      background: #ffffff;
-      border: 1px solid var(--border);
+      border-radius: 2px;
+      background: rgba(255,255,255,0.5);
+      border: 1px solid #e5e0dc;
     }
 
     .footer-links a:hover {
       border-color: rgba(216, 166, 180, 0.9);
+      background: #fff;
     }
 
     /* RESPONSIVE */
@@ -1058,10 +1118,12 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
-        padding: 10px 10px 8px;
-        border-radius: 18px;
-        background: #ffffff;
-        border: 1px solid var(--border);
+        padding: 16px;
+        border-radius: 2px;
+        background: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        z-index: 100;
       }
 
       .hero {
@@ -1168,7 +1230,6 @@
         </div>
 
         <aside class="hero-card">
-          <div class="hero-card-shine"></div>
           <div class="hero-card-inner">
             <div class="hero-tagline">Countdown to our "I do"</div>
             <div class="hero-date">4 July 2026 • 16:00</div>
@@ -1653,7 +1714,7 @@ Let’s laugh, dance, and celebrate together — this night holds a very special
               </div>
 
               <div class="rsvp-actions">
-              
+               
                 <span class="chip-link">
                   🔗 <a href="https://docs.google.com/forms/d/e/1FAIpQLSeUb0kKApKCQ6nN5uYBuQKEchbijVOpIvMruv33YzDw5MA6Hw/viewform?usp=dialog">Online RSVP form</a>
                 </span>

@@ -25,7 +25,12 @@
       --text: #2c2724; 
       --muted: #756f6b;
       --border: #e6e2dd;
+      
+      /* NYA 3D-SKUGGOR (Varmare ton) */
       --shadow-soft: 0 10px 30px -5px rgba(60, 50, 40, 0.06);
+      --shadow-card: 0 4px 6px -1px rgba(60, 50, 40, 0.05), 0 10px 30px -5px rgba(60, 50, 40, 0.12);
+      --shadow-card-hover: 0 20px 40px -5px rgba(60, 50, 40, 0.15), 0 8px 10px -6px rgba(60, 50, 40, 0.1);
+
       --radius-lg: 2px;
       --radius-pill: 999px;
       --max-width: 1120px;
@@ -58,17 +63,15 @@
       justify-content: center;
       align-items: center;
       overflow: hidden;
-      /* Säkerställ att man kan klicka igenom om JS skulle fela, men normalt hanterar JS detta */
       pointer-events: auto; 
     }
 
-    /* Textur för pappret (använder SVG-brus för realism) */
+    /* Textur för pappret */
     .paper-texture {
       background-color: var(--envelope-paper);
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E");
     }
 
-    /* Övre och undre halvan som glider isär */
     .envelope-flap {
       position: absolute;
       left: 0;
@@ -91,7 +94,7 @@
       border-top: 1px solid rgba(255,255,255,0.4);
     }
 
-    /* Vax-sigillet (Wax Seal) */
+    /* Vax-sigillet */
     .wax-seal-container {
       position: absolute;
       z-index: 10;
@@ -118,14 +121,13 @@
       justify-content: center;
       align-items: center;
       box-shadow: 
-        inset 0 0 20px rgba(0,0,0,0.5), /* Inre djup */
-        inset 2px 2px 5px rgba(255,255,255,0.2), /* Ljusreflektion kant */
-        0 5px 15px rgba(0,0,0,0.25), /* Skugga mot papper */
-        0 0 0 6px rgba(123, 17, 19, 0.7); /* Ojämn kant-effekt */
+        inset 0 0 20px rgba(0,0,0,0.5), 
+        inset 2px 2px 5px rgba(255,255,255,0.2), 
+        0 5px 15px rgba(0,0,0,0.25), 
+        0 0 0 6px rgba(123, 17, 19, 0.7);
       border: 1px solid rgba(0,0,0,0.1);
     }
 
-    /* För att göra kanten lite mer "oorganisk" (frivilligt) */
     .wax-seal::after {
       content: "";
       position: absolute;
@@ -142,11 +144,9 @@
       100% { transform: scale(1); opacity: 0.4; }
     }
 
-    /* Innehåll i sigillet */
     .wax-content {
       text-align: center;
-      color: #5a0b0d; /* Mörkare röd för "intryckt" effekt */
-      /* Denna text-shadow skapar deboss/gravyr-effekten */
+      color: #5a0b0d; 
       text-shadow: 
         1px 1px 0px rgba(255, 255, 255, 0.15), 
         -1px -1px 0px rgba(0, 0, 0, 0.3);
@@ -170,7 +170,6 @@
       font-weight: 600;
     }
 
-    /* Animation när man öppnar */
     .envelope-overlay.open {
       pointer-events: none;
     }
@@ -185,33 +184,30 @@
 
     .envelope-overlay.open .wax-seal-container {
       opacity: 0;
-      transform: scale(1.5); /* Växer och försvinner */
+      transform: scale(1.5);
       pointer-events: none;
     }
     
-    /* Klass för att dölja direkt om besökt tidigare */
     .hidden {
       display: none !important;
     }
 
 
     /* ------------------------------
-       HEMSIDA (STANDARD STYLES)
+       HEMSIDA
     ------------------------------ */
     
-    /* SCROLL ANIMATION CSS (Punkt 3) */
     .reveal {
       opacity: 0;
-      transform: translateY(40px); /* Startar lite längre ner */
-      transition: all 1s ease-out; /* Mjuk övergång på 1 sekund */
+      transform: translateY(40px);
+      transition: all 1s ease-out; 
     }
 
     .reveal.active {
       opacity: 1;
-      transform: translateY(0); /* Återgår till sin plats */
+      transform: translateY(0);
     }
 
-    /* PAPPERS-TEXTUR PÅ HEMSIDAN */
     body::before {
       content: "";
       position: fixed;
@@ -227,14 +223,13 @@
     }
 
     body {
-      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background-color: #faf7f2;
       background-image: linear-gradient(to bottom, #faf7f2 0%, #f0ece6 100%);
       color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden; /* Förhindrar sido-scroll under animation */
+      overflow-x: hidden;
     }
 
     a {
@@ -261,7 +256,7 @@
       backdrop-filter: blur(12px);
       background: rgba(253, 252, 249, 0.85);
       border-bottom: 1px solid rgba(0,0,0,0.03);
-      transition: transform 0.3s ease; /* För mjuk inflygning */
+      transition: transform 0.3s ease;
     }
 
     .nav-inner {
@@ -318,12 +313,7 @@
       left: -80%;
       width: 70%;
       height: 100%;
-      background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255, 255, 255, 0.55),
-        transparent
-      );
+      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.55), transparent);
       transform: skewX(-18deg);
       animation: shineIdle 4s infinite ease-in-out;
       opacity: 0.9;
@@ -352,7 +342,6 @@
       100% { left: 130%; opacity: 0.7; }
     }
 
-    /* NAV-LINKS */
     .nav-links {
       display: flex;
       align-items: center;
@@ -367,8 +356,7 @@
       position: relative;
       padding: 4px 4px;
       color: var(--muted);
-      transition: color var(--transition), transform var(--transition),
-        letter-spacing var(--transition);
+      transition: color var(--transition), transform var(--transition);
       white-space: nowrap;
     }
 
@@ -388,7 +376,6 @@
     .nav-links a:hover {
       color: var(--text);
       transform: translateY(-1px);
-      letter-spacing: 0.08em;
     }
 
     .nav-links a:hover::after {
@@ -411,8 +398,7 @@
       align-items: center;
       gap: 6px;
       cursor: pointer;
-      transition: transform var(--transition), box-shadow var(--transition),
-        filter var(--transition);
+      transition: transform var(--transition), box-shadow var(--transition);
       white-space: nowrap;
     }
 
@@ -591,18 +577,22 @@
       height: 14px;
     }
 
-    /* HERO SIDE CARD */
+    /* HERO SIDE CARD - UPPDATERAD MED 3D-EFFEKT */
     .hero-card {
       border-radius: 4px;
       padding: 24px;
       background: #ffffff;
-      border: 1px solid #eae5df;
-      box-shadow: 
-        0 1px 2px rgba(0,0,0,0.05), 
-        0 8px 16px rgba(0,0,0,0.03),
-        inset 0 0 40px rgba(250, 246, 240, 0.5);
+      border: 1px solid rgba(232, 225, 217, 0.6);
+      /* Ny djup skugga */
+      box-shadow: var(--shadow-card);
       position: relative;
       overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .hero-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-card-hover);
     }
     
     .hero-card::before {
@@ -695,7 +685,7 @@
       gap: 6px;
     }
 
-    /* SECTIONS */
+    /* SECTIONS - UPPDATERAD MED 3D-DJUP */
     main {
       padding: 10px 20px 60px;
     }
@@ -706,8 +696,9 @@
       padding: 30px 24px 32px;
       border-radius: 2px;
       background: #ffffff;
-      border: 1px solid #eae5df;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.02), 0 10px 20px rgba(0,0,0,0.02);
+      /* Tydligare border och djupare skugga */
+      border: 1px solid rgba(232, 225, 217, 0.8);
+      box-shadow: var(--shadow-card);
       position: relative;
     }
 
@@ -786,19 +777,48 @@
       font-size: 13px;
     }
 
-    /* VENUES */
-    .venue-grid {
+    /* VENUES & MENU - MED 3D-HOVER EFFEKT */
+    .venue-grid, .menu-grid, .explore-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
+      gap: 16px;
       margin-top: 10px;
     }
+    
+    .venue-grid, .dress-grid, .rsvp-grid {
+       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    
+    .menu-grid, .explore-grid {
+       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
 
-    .venue-card {
+    /* GEMENSAM KLASS FÖR ATT GE KORT 3D-KÄNSLA */
+    .venue-card, 
+    .menu-card, 
+    .explore-card {
       padding: 16px;
-      border-radius: 2px;
-      border: 1px solid #f0ebe6;
-      background: #fffcf8;
+      border-radius: 3px;
+      background: #fff;
+      border: 1px solid #efeae6;
+      /* Subtil basskugga */
+      box-shadow: 0 2px 5px rgba(60, 50, 40, 0.03); 
+      /* Mjuk "studsig" animation */
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* HOVER EFFEKT - LYFTER KORTEN */
+    .venue-card:hover, 
+    .menu-card:hover, 
+    .explore-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px -5px rgba(60, 50, 40, 0.12);
+      border-color: transparent; 
+      z-index: 2;
     }
 
     .venue-label {
@@ -847,6 +867,8 @@
       cursor: pointer;
       transition: background var(--transition), transform var(--transition),
         border-color var(--transition), color var(--transition);
+      text-decoration: none;
+      color: inherit;
     }
 
     .chip-link:hover {
@@ -856,25 +878,7 @@
       transform: translateY(-1px);
     }
 
-    /* MENU */
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-      margin-top: 10px;
-    }
-
-    .menu-card {
-      padding: 16px;
-      border-radius: 2px;
-      background: #fff;
-      border: 1px solid #e8e1d9;
-      box-shadow: 2px 2px 0px rgba(240, 235, 230, 1);
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
+    /* MENU SPECIFICS */
     .menu-course {
       font-size: 13px;
       text-transform: uppercase;
@@ -884,6 +888,7 @@
       padding-bottom: 4px;
       margin-bottom: 4px;
       display: inline-block;
+      width: fit-content;
     }
 
     .menu-title {
@@ -912,18 +917,18 @@
     }
 
     /* DRESS CODE */
-    .dress-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr);
-      gap: 16px;
-      margin-top: 10px;
+    .dress-main, .dress-side {
+        padding: 16px;
+        border-radius: 2px;
+        border: 1px solid #f0ebe6;
+        background: #fffcf9;
+        /* Även här en liten 3D touch */
+        transition: transform 0.3s ease;
     }
-
-    .dress-main {
-      padding: 16px;
-      border-radius: 2px;
-      border: 1px solid #f0ebe6;
-      background: #fffcf9;
+    
+    .dress-main:hover, .dress-side:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.03);
     }
 
     .dress-pill {
@@ -968,8 +973,6 @@
     }
 
     .dress-side {
-      padding: 16px;
-      border-radius: 2px;
       border: 1px dashed #d1ccc5;
       background: #faf8f5;
       font-size: 13px;
@@ -1005,24 +1008,7 @@
       margin-top: 6px;
     }
 
-    /* EXPLORE */
-    .explore-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
-      margin-top: 10px;
-    }
-
-    .explore-card {
-      padding: 14px;
-      border-radius: 2px;
-      border: 1px solid #f0ebe6;
-      background: #fff;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
+    /* EXPLORE SPECIFICS */
     .explore-name {
       font-size: 15px;
       color: var(--text);
@@ -1078,11 +1064,11 @@
     }
 
     /* RSVP */
-    .rsvp-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr);
-      gap: 14px;
-      margin-top: 10px;
+    .rsvp-main, .rsvp-side {
+        padding: 16px;
+        border-radius: 2px;
+        background: #fffcf9;
+        border: 1px solid #f0ebe6;
     }
 
     .rsvp-main p {
@@ -1125,10 +1111,6 @@
     }
 
     .rsvp-side {
-      padding: 16px;
-      border-radius: 2px;
-      border: 1px solid #f0ebe6;
-      background: #fffcf9;
       font-size: 13px;
       color: var(--muted);
     }
@@ -1957,12 +1939,10 @@ Let’s laugh, dance, and celebrate together — this night holds a very special
     // 1. KUVERT-LOGIK (ENVELOPE)
     // ------------------------------------------------
     function checkEnvelope() {
-      // Kollar om användaren redan har öppnat brevet i denna "session" (tabb)
       const hasOpened = sessionStorage.getItem("weddingInviteOpened");
       const envelope = document.getElementById("envelopeOverlay");
 
       if (hasOpened) {
-        // Om redan öppnat, dölj direkt (ingen animation)
         envelope.classList.add("hidden");
       }
     }
@@ -1970,19 +1950,15 @@ Let’s laugh, dance, and celebrate together — this night holds a very special
     function openEnvelope() {
       const envelope = document.getElementById("envelopeOverlay");
       
-      // Lägg till klass som startar CSS-animationen (flikarna åker isär)
       envelope.classList.add("open");
 
-      // Spara att vi har öppnat, så vi slipper se det vid omladdning
       sessionStorage.setItem("weddingInviteOpened", "true");
 
-      // Ta bort elementet helt efter animationen så det inte ligger i vägen
       setTimeout(() => {
         envelope.style.display = "none";
-      }, 1500); // 1.5 sekunder matchar CSS-transitionen
+      }, 1500); 
     }
 
-    // Kör kontrollen direkt
     checkEnvelope();
 
 

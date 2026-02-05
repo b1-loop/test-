@@ -44,6 +44,8 @@
       
       /* WhatsApp Färg */
       --whatsapp-green: #25D366;
+      /* Spotify Färg */
+      --spotify-green: #1DB954;
     }
 
     * {
@@ -1235,39 +1237,46 @@
       font-family: "Playfair Display", serif;
     }
 
-    /* SPOTIFY BUTTON */
+    /* SPOTIFY BUTTON (NEW CENTERED STYLE) */
+    .spotify-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
     .spotify-btn {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 14px 22px;
-      font-size: 14px;
+      gap: 12px;
+      padding: 16px 28px;
+      font-size: 15px;
       font-weight: 600;
       border-radius: 30px;
       background: #fff;
       color: #7a6259;
-      border: 1px solid #e8e1d9;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-      transition: all 0.25s ease;
+      border: 2px solid #e8e1d9; /* Lite tjockare kant */
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
       text-decoration: none;
     }
 
     .spotify-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 12px rgba(0,0,0,0.08);
-      background: #faf8f6;
+      box-shadow: 0 8px 20px rgba(29, 185, 84, 0.2); /* Grönt sken vid hover */
+      border-color: var(--spotify-green);
+      color: var(--spotify-green);
     }
 
     .spotify-icon {
-      width: 18px;
-      height: 18px;
+      width: 24px; /* Lite större ikon */
+      height: 24px;
       display: block;
-      filter: brightness(0.5);
-      transition: filter 0.2s ease;
+      filter: grayscale(100%); /* Svartvit först */
+      transition: filter 0.3s ease;
     }
 
     .spotify-btn:hover .spotify-icon {
-      filter: brightness(0.3);
+      filter: none; /* Bli grön vid hover */
     }
 
     /* FOOTER */
@@ -1835,16 +1844,18 @@ Let’s laugh, dance, and celebrate together — this night holds a very special
             and international vibes.
           </p>
 
-          <a class="spotify-btn"
-             href="https://open.spotify.com/playlist/6vlW4I5jbTenW7kZI7i7fX?si=dP54Hph5SDenyJWc3N7Mcg"
-             target="_blank" rel="noreferrer">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg"
-              alt="Spotify"
-              class="spotify-icon"
-            />
-            Listen on Spotify
-          </a>
+          <div class="spotify-container">
+              <a class="spotify-btn"
+                 href="https://open.spotify.com/playlist/6vlW4I5jbTenW7kZI7i7fX?si=dP54Hph5SDenyJWc3N7Mcg"
+                 target="_blank" rel="noreferrer">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg"
+                  alt="Spotify"
+                  class="spotify-icon"
+                />
+                Listen on Spotify
+              </a>
+          </div>
         </div>
       </section>
 

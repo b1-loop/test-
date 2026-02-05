@@ -1042,6 +1042,70 @@
       color: var(--muted);
     }
 
+    /* LEXICON STYLES (NEW) */
+    .lexicon-grid {
+      overflow-x: auto; /* Gör tabellen scrollbar på små mobiler */
+      border: 1px solid #e0dbd6;
+      border-radius: 2px;
+      background: #fff;
+    }
+    
+    .lexicon-table {
+      display: flex;
+      flex-direction: column;
+      min-width: 320px; /* Se till att den inte kollapsar för mycket */
+    }
+
+    .lexicon-row {
+      display: grid;
+      grid-template-columns: 0.8fr 1.1fr 1.1fr; /* Justera bredd på kolumnerna */
+      border-bottom: 1px solid #eee;
+    }
+    
+    .lexicon-row:last-child {
+      border-bottom: none;
+    }
+
+    .lexicon-row.header {
+      background: #fffcf9;
+      font-weight: 600;
+      color: #7a6259;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .lexicon-row .col {
+      padding: 12px 10px;
+      font-size: 13px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .col.label {
+      font-weight: 600;
+      color: #b65f7c;
+      background: #fdfdfd;
+    }
+
+    .phonetic {
+      font-size: 11px;
+      color: #999;
+      font-style: italic;
+      margin-top: 2px;
+    }
+    
+    @media (max-width: 600px) {
+      .lexicon-row {
+        grid-template-columns: 1fr 1fr 1fr; 
+        font-size: 12px;
+      }
+      .col.label {
+        font-size: 11px;
+      }
+    }
+
     /* TOASTMASTERS */
     .toastmasters-list {
       list-style: none;
@@ -1380,6 +1444,7 @@
           <a href="#traditions">Celebration</a>
           <a href="#mood">Playlist</a>
           <a href="#explore">Explore</a>
+          <a href="#lexicon">Dictionary</a>
           <a href="#toastmasters">Toastmasters</a>
           <a href="#rsvp">RSVP</a>
         </nav>
@@ -1609,8 +1674,7 @@
               </div>
             </div>
           </div>
-          
-          </div>
+        </div>
       </section>
 
       <section class="section reveal" id="menu">
@@ -1649,13 +1713,13 @@
                 <li>Dolma</li>
               </ul>
               <p class="menu-note">
-                A warm selection of meze to enjoy together.
+                A warm selection to enjoy together before the main course.
               </p>
             </div>
 
             <div class="menu-card">
               <div class="menu-course">Main course</div>
-              <div class="menu-title">Chicken & Vegetarian option</div>
+              <div class="menu-title">Chicken & vegetarian option</div>
               <ul class="menu-items">
                 <li>Grilled chicken fillet with potatoes, tomato, asparagus and mushroom sauce</li>
                 <li>Vegetarian option: Quorn fillet with potatoes</li>
@@ -1881,6 +1945,93 @@ Let’s laugh, dance, and celebrate together — this night holds a very special
               </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section class="section reveal" id="lexicon">
+        <div class="section-header">
+          <div class="section-title">Wedding Dictionary</div>
+          <div class="section-kicker">Speak the love language</div>
+        </div>
+        <div class="section-body">
+          <p>
+            Since we are blending two beautiful cultures, here is a mini survival guide 
+            to help you toast, dance, and celebrate with everyone tonight!
+          </p>
+
+          <div class="lexicon-grid">
+            <div class="lexicon-table">
+              <div class="lexicon-row header">
+                <div class="col">English</div>
+                <div class="col">🇧🇬 Bulgarian <br><span class="phonetic">(Pronunciation)</span></div>
+                <div class="col">🇱🇧 Lebanese <br><span class="phonetic">(Pronunciation)</span></div>
+              </div>
+
+              <div class="lexicon-row">
+                <div class="col label">Cheers! 🥂</div>
+                <div class="col">
+                  <strong>Nazdrave</strong>
+                  <span class="phonetic">Naz-drah-veh</span>
+                </div>
+                <div class="col">
+                  <strong>Kesak / Kesik</strong>
+                  <span class="phonetic">Kess-ak (m) / Kess-ik (f)</span>
+                </div>
+              </div>
+
+              <div class="lexicon-row">
+                <div class="col label">Thank you 🙏</div>
+                <div class="col">
+                  <strong>Blagodarya</strong>
+                  <span class="phonetic">Bla-go-dar-ya</span>
+                </div>
+                <div class="col">
+                  <strong>Shukran</strong>
+                  <span class="phonetic">Shook-ran</span>
+                </div>
+              </div>
+
+              <div class="lexicon-row">
+                <div class="col label">I love you ❤️</div>
+                <div class="col">
+                  <strong>Obicham te</strong>
+                  <span class="phonetic">O-bee-cham te</span>
+                </div>
+                <div class="col">
+                  <strong>Bhebbak / Bhebbik</strong>
+                  <span class="phonetic">B-heb-bak (m) / B-heb-bik (f)</span>
+                </div>
+              </div>
+
+              <div class="lexicon-row">
+                <div class="col label">Let's dance! 💃</div>
+                <div class="col">
+                  <strong>Haide na horo!</strong>
+                  <span class="phonetic">Hi-deh na ho-ro</span>
+                </div>
+                <div class="col">
+                  <strong>Yalla nerqos!</strong>
+                  <span class="phonetic">Yal-la ner-os</span>
+                </div>
+              </div>
+              
+               <div class="lexicon-row">
+                <div class="col label">Congrats! 🎉</div>
+                <div class="col">
+                  <strong>Chestito</strong>
+                  <span class="phonetic">Ches-tee-to</span>
+                </div>
+                <div class="col">
+                  <strong>Mabrouk</strong>
+                  <span class="phonetic">Mab-rook</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <p class="menu-note" style="text-align: center; margin-top: 15px;">
+            Don't worry about the accent – saying it with a smile is what counts!
+          </p>
         </div>
       </section>
 
